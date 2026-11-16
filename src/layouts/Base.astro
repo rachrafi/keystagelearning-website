@@ -1,0 +1,86 @@
+---
+import '../styles/global.css';
+import { YT_CHANNEL } from '../data/links';
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: string;
+  noindex?: boolean;
+}
+const { title, description = 'Free, fun video lessons for KS2, KS3 and GCSE, starting with Computing and IT.', active = '' } = Astro.props;
+const fullTitle = title === 'Home' ? 'Key Stage Learning | Fun, clear lessons for KS2, KS3 and GCSE' : `${title} | Key Stage Learning`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://www.keystagelearning.org');
+const cur = (k: string) => (active === k ? 'page' : undefined);
+---
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/png" href="/images/favicon.png" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL('/images/logo-256.png', canonical)} />
+  <meta name="theme-color" content="#291a6d" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to the main content</a>
+  <header class="site">
+    <div class="wrap nav">
+      <a class="brand" href="/"><img src="/images/logo-256.png" alt="Key Stage Learning home" width="44" height="44" /><span class="brand-text">Key Stage <span>Learning</span></span></a>
+      <div class="ks-quick" aria-label="Key stages">
+        <a class="ks2" href="/ks2/">KS2</a><a class="ks3" href="/ks3/">KS3</a><a class="gcse" href="/gcse/">GCSE</a>
+      </div>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-menu">Menu</button>
+      <nav id="site-menu" aria-label="Main">
+        <ul class="menu">
+          <li><a class="ks ks2" href="/ks2/" aria-current={cur('ks2')}>KS2</a></li>
+          <li><a class="ks ks3" href="/ks3/" aria-current={cur('ks3')}>KS3</a></li>
+          <li><a class="ks gcse" href="/gcse/" aria-current={cur('gcse')}>GCSE</a></li>
+          <li><a href="/subjects/" aria-current={cur('subjects')}>Subjects</a></li>
+          <li><a href="/quizzes/" aria-current={cur('quizzes')}>Quizzes</a></li>
+          <li><a href="/parents-and-teachers/" aria-current={cur('parents')}>Parents and teachers</a></li>
+          <li><a href="/search/" aria-current={cur('search')}>Search</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn-yt yt-btn" href={YT_CHANNEL} rel="noopener" style="padding:10px 18px;font-size:16px">
+        <svg class="yt-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15.1V8.9L15.5 12l-5.8 3.1z"/></svg>
+        YouTube
+      </a>
+    </div>
+  </header>
+
+  <main id="main" data-pagefind-body={!Astro.props.noindex || undefined}>
+    <slot />
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      <nav aria-label="Footer" class="foot-links">
+        <a href="/parents-and-teachers/">Parents and teachers</a>
+        <a href="/characters/">Meet the characters</a>
+        <a href="/search/">Search</a>
+        <a href="/quizzes/">All quizzes</a>
+        <a href="/help/" class="worried">Worried about something?</a>
+        <a href="/about/">About and privacy</a>
+        <a href={YT_CHANNEL} rel="noopener">YouTube</a>
+      </nav>
+      <div>© {new Date().getFullYear()} Key Stage Learning · No ads, no accounts, no tracking cookies.</div>
+    </div>
+  </footer>
+
+  <script>
+    const btn = document.querySelector<HTMLButtonElement>('.menu-toggle');
+    const menu = document.getElementById('site-menu');
+    btn?.addEventListener('click', () => {
+      const open = menu!.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Close' : 'Menu';
+    });
+  </script>
+</body>
+</html>

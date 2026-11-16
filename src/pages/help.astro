@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+---
+<Base title="Worried about something?" description="What to do if something online upsets or worries you.">
+  <div class="page-hero">
+    <div class="wrap">
+      <Crumbs items={[{ label: 'Worried about something?' }]} />
+      <h1>Worried about something?</h1>
+      <p>If something online has upset you or made you feel worried, you are not on your own.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap prose">
+      <div class="callout">
+        <p>1. <strong>Stop.</strong> Close the page, game or message.</p>
+        <p>2. <strong>Tell a trusted adult</strong>, like a parent, carer or teacher.</p>
+        <p>3. <strong>You won't be in trouble.</strong> Telling someone is always the right thing to do.</p>
+      </div>
+      <h2>If you can't talk to an adult you know</h2>
+      <p>You can talk to <strong>Childline</strong> for free, any time, about anything. Call <a href="tel:08001111"><strong>0800 1111</strong></a> or visit <a href="https://www.childline.org.uk" rel="noopener">childline.org.uk</a>.</p>
+      <p>If you are in danger right now, call <strong>999</strong>.</p>
+      <h2>For grown-ups</h2>
+      <p>To report something worrying that happened online, you can use <a href="https://www.ceop.police.uk/Safety-Centre/" rel="noopener">CEOP</a>. For advice on keeping children safe online, see <a href="https://www.nspcc.org.uk/keeping-children-safe/online-safety/" rel="noopener">NSPCC online safety</a>.</p>
+    </div>
+  </section>
+</Base>

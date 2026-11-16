@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { subjects, lessonCount } from '../data/catalogue';
+---
+<Base title="Subjects" description="Every subject on Key Stage Learning." active="subjects">
+  <div class="page-hero">
+    <div class="wrap">
+      <Crumbs items={[{ label: 'Subjects' }]} />
+      <h1>Subjects</h1>
+      <p>We're starting with Computing and IT. Maths and Science are next on the list.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="subject-grid">
+        {subjects.map((s) => s.live ? (
+          <a class="subject live" href={`/${s.id}/`}>
+            <div class="ico" aria-hidden="true">{s.icon}</div>
+            <div><strong>{s.name}</strong><span class="live-badge">{lessonCount(s.id)} videos</span><p>{s.blurb}</p></div>
+          </a>
+        ) : (
+          <div class="subject"><div class="ico" aria-hidden="true">{s.icon}</div>{s.name}<br /><span class="soon">Coming soon</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

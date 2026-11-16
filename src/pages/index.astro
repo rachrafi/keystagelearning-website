@@ -1,0 +1,129 @@
+---
+import Base from '../layouts/Base.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { keyStages, subjects, topics, videosInTopic, newestFirst, videoBySlug, lessonCount, quizzes } from '../data/catalogue';
+import { YT_SUBSCRIBE } from '../data/links';
+const newest = newestFirst.map(videoBySlug).filter((v) => v.kind !== 'quiz').slice(0, 4);
+const stageLessons = (ks: string) => topics.filter((t) => videosInTopic(t.id).some((v) => v.keyStages.includes(ks as any))).length;
+---
+<Base title="Home">
+  <style>
+    .hero { background: linear-gradient(180deg, var(--navy) 0%, var(--navy-ink) 100%); color: #fff; position: relative; overflow: hidden; }
+    .hero-inner { text-align: center; padding: 64px 20px 36px; position: relative; z-index: 2; }
+    .hero h1 { font-size: clamp(44px, 8vw, 96px); line-height: 1; margin: 0 0 22px; font-weight: 900; letter-spacing: -1px; }
+    .hero h1 span { color: var(--yellow); }
+    .tagline { display: inline-block; background: var(--yellow); color: var(--navy-deep); font-weight: 800; border-radius: 999px; padding: 8px 22px; font-size: clamp(17px, 2.4vw, 24px); }
+    .hero p.lead { max-width: 640px; margin: 24px auto 28px; font-size: 20px; color: #dcd6ff; }
+    .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .hero-key { position: absolute; left: 6%; top: 22%; width: 120px; z-index: 1; transform: rotate(-8deg); }
+    .star { position: absolute; color: var(--yellow); z-index: 1; animation: twinkle 3s ease-in-out infinite; }
+    @keyframes twinkle { 50% { opacity: .35; transform: scale(.8); } }
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); align-items: end; position: relative; z-index: 2; margin-top: 110px; }
+    .step { position: relative; color: #fff; text-decoration: none; text-align: center; padding: 22px 10px 26px; border-top: 8px solid #e9e6f5; }
+    .step b { display: block; font-size: clamp(34px, 6vw, 72px); font-weight: 900; line-height: 1; transition: transform .15s; }
+    .step small { display: block; font-weight: 600; font-size: 16px; margin-top: 4px; }
+    .step:hover b { transform: scale(1.06); }
+    .step.ks2 { background: var(--ks2); height: 150px; }
+    .step.ks3 { background: var(--ks3); height: 190px; border-left: 8px solid #e9e6f5; }
+    .step.gcse { background: var(--gcse); height: 230px; border-left: 8px solid #e9e6f5; }
+    .char { position: absolute; bottom: 100%; pointer-events: none; margin-bottom: 6px; }
+    .char.selma { left: 30%; width: clamp(70px, 9vw, 120px); }
+    .char.pengbot { left: 18%; width: clamp(70px, 10vw, 120px); }
+    .char.aaliyah { right: 25%; width: clamp(80px, 11vw, 140px); animation: bounce 2.4s ease-in-out infinite; }
+    @keyframes bounce { 50% { transform: translateY(-8px); } }
+    @media (max-width: 900px) { .hero-key { width: 70px; top: 12px; left: 16px; } }
+    @media (max-width: 560px) {
+      .hide-sm { display: none; }
+      .step.ks2 { height: 110px; } .step.ks3 { height: 140px; } .step.gcse { height: 170px; }
+      .step small { font-size: 13px; }
+    }
+  </style>
+
+  <div class="hero">
+    <img class="hero-key" src="/images/key.png" alt="" />
+    <span class="star hide-sm" style="left:12%;top:58%;width:34px;height:34px"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
+    <span class="star" style="right:10%;top:12%;width:40px;height:40px;animation-delay:1.4s"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
+    <span class="star hide-sm" style="right:20%;top:44%;width:22px;height:22px;animation-delay:2s"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg></span>
+    <div class="hero-inner">
+      <h1>Key Stage <span>Learning</span></h1>
+      <div class="tagline">Fun, clear lessons for every subject</div>
+      <p class="lead">Free video lessons that make tricky ideas click. Join Pengbot, Aaliyah and Selma as they explore computers, coding, the internet and more.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-yellow" href="#stages">Pick your key stage</a>
+        <a class="btn btn-ghost" href="/computing/">Browse Computing</a>
+      </div>
+    </div>
+    <div class="steps">
+      <a class="step ks2" href="/ks2/"><img class="char selma" src="/images/selma.png" alt="" /><b>KS2</b><small>Ages 7 to 11</small></a>
+      <a class="step ks3" href="/ks3/"><img class="char pengbot" src="/images/pengbot.png" alt="" /><b>KS3</b><small>Ages 11 to 14</small></a>
+      <a class="step gcse" href="/gcse/"><img class="char aaliyah" src="/images/aaliyah.png" alt="" /><b>GCSE</b><small>Ages 14 to 16</small></a>
+    </div>
+  </div>
+
+  <section id="stages">
+    <div class="wrap">
+      <span class="eyebrow">Step by step</span>
+      <h2>Pick your key stage</h2>
+      <p class="intro">Choose the level that fits. You'll only see the lessons made for that age.</p>
+      <div class="stage-grid">
+        {keyStages.map((k) => (
+          <a class:list={['stage-card', k.id]} href={`/${k.id}/`}>
+            <span class="tag">{k.name}</span>
+            <h3>{k.years} {!k.live && <span class="soon">Coming soon</span>}</h3>
+            <p>{k.blurb}</p>
+            <div class="meta">{k.live ? `${stageLessons(k.id)} Computing topics →` : 'Subscribe to hear when it launches'}</div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="white">
+    <div class="wrap">
+      <span class="eyebrow">Just added</span>
+      <h2>Newest videos</h2>
+      <p class="intro">The latest lessons from the channel.</p>
+      <div class="video-grid">{newest.map((v) => <VideoCard video={v} showTopic />)}</div>
+    </div>
+  </section>
+
+  <section id="subjects">
+    <div class="wrap">
+      <span class="eyebrow">What you can learn</span>
+      <h2>Subjects</h2>
+      <p class="intro">We're starting with Computing and IT. More subjects are on the way.</p>
+      <div class="subject-grid">
+        {subjects.map((s) => s.live ? (
+          <a class="subject live" href={`/${s.id}/`}>
+            <div class="ico" aria-hidden="true">{s.icon}</div>
+            <div><strong>{s.name}</strong><span class="live-badge">{lessonCount(s.id)} videos · {quizzes.length} quizzes</span><p>{s.blurb}</p></div>
+          </a>
+        ) : (
+          <div class="subject"><div class="ico" aria-hidden="true">{s.icon}</div>{s.name}<br /><span class="soon">Coming soon</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cast">
+    <div class="wrap" style="text-align:center">
+      <span class="eyebrow">Meet the team</span>
+      <h2>Learn with friends</h2>
+      <p class="intro" style="margin-left:auto;margin-right:auto">Every lesson is a little adventure with characters you'll get to know, and one you should never trust.</p>
+      <div class="cast-grid">
+        <div class="member"><div class="pic"><img src="/images/pengbot.png" alt="Pengbot, a robot penguin on wheels" /></div><h3>Pengbot</h3><div class="role">Robot penguin and helper</div></div>
+        <div class="member"><div class="pic"><img src="/images/aaliyah.png" alt="Aaliyah in a purple hoodie and pink glasses" /></div><h3>Aaliyah</h3><div class="role">KS3 explorer</div></div>
+        <div class="member"><div class="pic"><img src="/images/selma.png" alt="Selma in a teal hoodie with a star" /></div><h3>Selma</h3><div class="role">KS2 adventurer</div></div>
+        <div class="member"><div class="pic"><img src="/images/sid.png" alt="Sneaky Sid, a grey raccoon in a mask" /></div><h3>Sneaky Sid</h3><div class="role">The one to watch out for</div></div>
+      </div>
+      <p style="margin-top:28px"><a class="btn btn-yellow" href="/characters/">Meet the characters</a></p>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap">
+      <div><h2>New lessons every week</h2><p>Subscribe on YouTube so you never miss a video.</p></div>
+      <a class="btn btn-yt" href={YT_SUBSCRIBE} rel="noopener">Subscribe on YouTube</a>
+    </div>
+  </div>
+</Base>

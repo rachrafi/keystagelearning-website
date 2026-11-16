@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+---
+<Base title="Search" description="Search every Key Stage Learning video." active="search" noindex>
+  <div class="page-hero">
+    <div class="wrap">
+      <Crumbs items={[{ label: 'Search' }]} />
+      <h1>Search</h1>
+      <p>Type a word, like "binary", "passwords" or "Pengbot".</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+      <div id="search"></div>
+      <noscript><p>Search needs JavaScript. You can browse by <a href="/ks2/">KS2</a>, <a href="/ks3/">KS3</a> or <a href="/computing/">topic</a> instead.</p></noscript>
+    </div>
+  </section>
+  <style is:global>
+    #search { --pagefind-ui-font: Outfit, system-ui, sans-serif; --pagefind-ui-primary: #291a6d; --pagefind-ui-text: #1d1150; --pagefind-ui-border: #d9cfee; --pagefind-ui-border-radius: 14px; --pagefind-ui-scale: 1; }
+  </style>
+  <script is:inline src="/pagefind/pagefind-ui.js"></script>
+  <script is:inline>
+    window.addEventListener('DOMContentLoaded', () => {
+      if (window.PagefindUI) new PagefindUI({ element: '#search', showSubResults: false, showImages: false, autofocus: true });
+    });
+  </script>
+</Base>

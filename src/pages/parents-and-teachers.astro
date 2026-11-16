@@ -1,0 +1,67 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { topicsFor, videosInTopic, ksLabel } from '../data/catalogue';
+import { CONTACT_EMAIL, YT_CHANNEL } from '../data/links';
+const list = topicsFor('computing');
+---
+<Base title="Parents and teachers" description="How to use Key Stage Learning at home and in class, and how each topic maps to the curriculum." active="parents">
+  <div class="page-hero">
+    <div class="wrap">
+      <Crumbs items={[{ label: 'Parents and teachers' }]} />
+      <h1>For parents and teachers</h1>
+      <p>Clear, calm lessons you can trust, whether you're teaching a class or helping with homework.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="grownups-grid">
+        <div class="feature"><div class="ico" aria-hidden="true">🎯</div><h3>Curriculum matched</h3><p>Checked against the England National Curriculum for Computing at KS2 and KS3.</p></div>
+        <div class="feature"><div class="ico" aria-hidden="true">🛡️</div><h3>Safe by design</h3><p>No ads, no accounts, no comments and no tracking cookies on this site.</p></div>
+        <div class="feature"><div class="ico" aria-hidden="true">🆓</div><h3>Always free</h3><p>Every lesson is free, at school or at home. Each video has its own short link to share.</p></div>
+      </div>
+    </div>
+  </section>
+  <section class="white">
+    <div class="wrap">
+      <h2>How to use the lessons</h2>
+      <ul class="prose" style="padding-left:22px">
+        <li>Choose the key stage first. KS2 pages only show KS2 lessons, so children see what suits them.</li>
+        <li>Two-part topics start with Part 1 for KS2 and go deeper in Part 2 for KS3. Older children can go back to Part 1 to revise.</li>
+        <li>Where a bonus quiz exists, it sits straight after the lesson. Pause before each answer.</li>
+        <li>To set a video as homework, copy the address of its page on this site. It plays without YouTube's comments or recommendations around it.</li>
+      </ul>
+    </div>
+  </section>
+  <section>
+    <div class="wrap">
+      <h2>Topic map</h2>
+      <p class="intro">Every Computing topic and the key stages it covers.</p>
+      <div class="table-scroll">
+        <table class="map">
+          <thead><tr><th>Topic</th><th>Key stages</th><th>Videos</th></tr></thead>
+          <tbody>
+            {list.map((t) => {
+              const vs = videosInTopic(t.id);
+              return (
+                <tr>
+                  <td><a href={`/computing/${t.id}/`}><strong>{t.title}</strong></a></td>
+                  <td>{ksLabel([...new Set(vs.flatMap((v) => v.keyStages))])}</td>
+                  <td>{vs.map((v, i) => <>{i > 0 && ' · '}<a href={`/watch/${v.slug}/`}>{v.title}</a></>)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="white tight">
+    <div class="wrap prose">
+      <h2>Get in touch</h2>
+      {CONTACT_EMAIL
+        ? <p>Questions, ideas or spotted a mistake? Email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+        : <p>Questions or ideas? Get in touch through the <a href={YT_CHANNEL} rel="noopener">Key Stage Learning YouTube channel</a>.</p>}
+    </div>
+  </section>
+</Base>

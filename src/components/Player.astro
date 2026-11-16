@@ -1,0 +1,30 @@
+---
+// Shows the thumbnail and a big play button. The YouTube player only loads when it is pressed,
+// from YouTube's privacy-enhanced (no-cookie) address.
+import { type Video, thumb } from '../data/catalogue';
+interface Props { video: Video }
+const { video } = Astro.props;
+const src = `https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0&modestbranding=1&cc_load_policy=1&hl=en-GB`;
+---
+<div class:list={['player', { short: video.kind === 'short' }]} data-src={src} data-title={video.fullTitle}>
+  <button type="button" aria-label={`Play video: ${video.title}`}>
+    <img src={thumb(video.youtubeId)} alt="" width="480" height="360" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" />
+    <span class="big-play" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 24 24"><path fill="#fff" d="M7 4v16l13-8z"/></svg></span>
+  </button>
+</div>
+<p class="player-note" data-pagefind-ignore>The video plays from YouTube when you press play. Captions are switched on.</p>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.player').forEach((p) => {
+    p.querySelector('button')?.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.src = p.dataset.src!;
+      f.title = p.dataset.title ?? 'YouTube video';
+      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
+      f.referrerPolicy = 'strict-origin-when-cross-origin';
+      f.allowFullscreen = true;
+      p.replaceChildren(f);
+      f.focus();
+    });
+  });
+</script>

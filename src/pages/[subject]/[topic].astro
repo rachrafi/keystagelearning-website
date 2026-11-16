@@ -1,0 +1,40 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import VideoCard from '../../components/VideoCard.astro';
+import { topics, subjectById, videosInTopic } from '../../data/catalogue';
+
+export function getStaticPaths() {
+  return topics.map((t) => ({ params: { subject: t.subject, topic: t.id } }));
+}
+const topic = topics.find((t) => t.id === Astro.params.topic)!;
+const subject = subjectById(topic.subject);
+const vs = videosInTopic(topic.id);
+const groups = topic.twoPart
+  ? [
+      { title: 'Part 1 · KS2', note: 'Start here if you are in Years 3 to 6.', items: vs.filter((v) => v.part === 1) },
+      { title: 'Part 2 · KS3', note: 'Goes deeper, for Years 7 to 9.', items: vs.filter((v) => v.part === 2) },
+    ].filter((g) => g.items.length)
+  : [{ title: 'Videos', note: '', items: vs }];
+---
+<Base title={topic.title} description={topic.blurb} active="subjects">
+  <div class="page-hero">
+    <div class="wrap">
+      <Crumbs items={[{ label: subject.name, href: `/${subject.id}/` }, { label: topic.title }]} />
+      <h1>{topic.title}</h1>
+      <p>{topic.blurb}</p>
+    </div>
+  </div>
+  {groups.map((g, i) => (
+    <section class:list={['tight', { white: i % 2 === 1 }]}>
+      <div class="wrap">
+        <h2>{g.title}</h2>
+        {g.note && <p class="intro" style="margin-bottom:20px">{g.note}</p>}
+        <div class="video-grid">{g.items.map((v) => <VideoCard video={v} />)}</div>
+      </div>
+    </section>
+  ))}
+  {topic.twoPart && groups.length === 1 && (
+    <section class="tight white"><div class="wrap"><h2>Part 2 · KS3</h2><p class="intro">Coming soon.</p></div></section>
+  )}
+</Base>

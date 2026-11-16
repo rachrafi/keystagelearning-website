@@ -1,0 +1,22 @@
+---
+import { type Video, thumb, topicById } from '../data/catalogue';
+interface Props { video: Video; showTopic?: boolean }
+const { video, showTopic = false } = Astro.props;
+const topic = topicById(video.topic);
+---
+<a class:list={['vcard', video.kind]} href={`/watch/${video.slug}/`}>
+  <div class="thumb">
+    <img src={thumb(video.youtubeId)} alt="" loading="lazy" width="480" height="360" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" />
+    <span class="play" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4v16l13-8z"/></svg></span>
+  </div>
+  <div class="body">
+    <h3>{video.title}</h3>
+    {showTopic && <span style="font-size:15px;color:var(--muted)">{topic.title}</span>}
+    <div class="tags">
+      {video.keyStages.map((k) => <span class:list={['badge', k]}>{k.toUpperCase()}</span>)}
+      {video.part && <span class="badge part">Part {video.part}</span>}
+      {video.kind === 'quiz' && <span class="badge quiz">Quiz</span>}
+      {video.kind === 'short' && <span class="badge short">Short</span>}
+    </div>
+  </div>
+</a>

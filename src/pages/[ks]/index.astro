@@ -1,0 +1,64 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import { keyStages, subjects, topicsFor, videos, topicById, type KeyStage } from '../../data/catalogue';
+import { YT_SUBSCRIBE } from '../../data/links';
+
+export function getStaticPaths() {
+  return keyStages.map((k) => ({ params: { ks: k.id } }));
+}
+const ksId = Astro.params.ks as KeyStage;
+const ks = keyStages.find((k) => k.id === ksId)!;
+const count = (sid: string) => videos.filter((v) => v.keyStages.includes(ksId) && topicById(v.topic).subject === sid).length;
+const live = subjects.filter((s) => s.live && count(s.id) > 0);
+---
+<Base title={`${ks.name} lessons`} description={`Free ${ks.name} video lessons for ${ks.ages.toLowerCase()} (${ks.years}).`} active={ksId}>
+  <div class:list={['page-hero', ksId]}>
+    <div class="wrap">
+      <Crumbs items={[{ label: ks.name }]} />
+      <h1>{ks.name} <span style="font-size:.5em;font-weight:700">{ks.years} · {ks.ages}</span></h1>
+      <p>{ks.blurb}</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      {ks.live ? (
+        <>
+          <h2>Pick a subject</h2>
+          <div class="subject-grid">
+            {subjects.map((s) => live.includes(s) ? (
+              <a class="subject live" href={`/${ksId}/${s.id}/`}>
+                <div class="ico" aria-hidden="true">{s.icon}</div>
+                <div><strong>{s.name}</strong><span class="live-badge">{count(s.id)} videos</span><p>All the {ks.name} {s.name} lessons and quizzes.</p></div>
+              </a>
+            ) : (
+              <div class="subject"><div class="ico" aria-hidden="true">{s.icon}</div>{s.name}<br /><span class="soon">Coming soon</span></div>
+            ))}
+          </div>
+          {live.map((s) => (
+            <div style="margin-top:48px">
+              <h2>{s.name} topics for {ks.name}</h2>
+              <div class="topic-grid">
+                {topicsFor(s.id, ksId).map((t) => (
+                  <a class="topic" href={`/${ksId}/${s.id}/#${t.id}`}>
+                    <h3>{t.title}</h3><p>{t.blurb}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </>
+      ) : (
+        <div class="prose">
+          <h2>{ks.name} lessons are coming soon</h2>
+          <p>We're working on exam-focused lessons that build on everything from KS3. Until then, the KS3 lessons are a great place to revise the basics.</p>
+          <div class="cta-row">
+            <a class="btn btn-navy" href="/ks3/">Go to KS3</a>
+            <a class="btn btn-yt" href={YT_SUBSCRIBE} rel="noopener">Subscribe to hear first</a>
+          </div>
+        </div>
+      )}
+    </div>
+  </section>
+</Base>

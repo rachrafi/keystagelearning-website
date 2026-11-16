@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import { subjects, topicsFor, videosInTopic, comingSoon } from '../../data/catalogue';
+
+export function getStaticPaths() {
+  return subjects.filter((s) => s.live).map((s) => ({ params: { subject: s.id } }));
+}
+const subject = subjects.find((s) => s.id === Astro.params.subject)!;
+const list = topicsFor(subject.id);
+const soon = comingSoon.filter((c) => c.subject === subject.id);
+---
+<Base title={subject.name} description={`All ${subject.name} topics for KS2 and KS3.`} active="subjects">
+  <div class="page-hero">
+    <div class="wrap">
+      <Crumbs items={[{ label: 'Subjects', href: '/subjects/' }, { label: subject.name }]} />
+      <h1>{subject.name}</h1>
+      <p>{subject.blurb} Most topics come in two parts: Part 1 for KS2 and Part 2 for KS3.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <p style="margin-top:0">Want only one level? <a href={`/ks2/${subject.id}/`}>KS2 {subject.name}</a> · <a href={`/ks3/${subject.id}/`}>KS3 {subject.name}</a></p>
+      <div class="topic-grid">
+        {list.map((t) => {
+          const vs = videosInTopic(t.id);
+          const ks = [...new Set(vs.flatMap((v) => v.keyStages))];
+          return (
+            <a class="topic" href={`/${subject.id}/${t.id}/`}>
+              <h3>{t.title}</h3><p>{t.blurb}</p>
+              <div class="tags">
+                {ks.map((k) => <span class:list={['badge', k]}>{k.toUpperCase()}</span>)}
+                {vs.some((v) => v.kind === 'quiz') && <span class="badge quiz">Quiz</span>}
+                <span class="badge part">{vs.filter((v) => v.kind !== 'quiz').length} videos</span>
+              </div>
+            </a>
+          );
+        })}
+        {soon.map((c) => (
+          <div class="topic soon-card"><h3>{c.title}</h3><p>New lessons on the way.</p><span class="soon" style="margin:0">Coming soon</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>

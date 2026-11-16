@@ -1,0 +1,76 @@
+---
+import Base from '../../layouts/Base.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import Player from '../../components/Player.astro';
+import { videos, topicById, subjectById, videosInTopic, videoBySlug, thumb, ksLabel } from '../../data/catalogue';
+
+export function getStaticPaths() {
+  return videos.map((v) => ({ params: { slug: v.slug } }));
+}
+const video = videoBySlug(Astro.params.slug!);
+const topic = topicById(video.topic);
+const subject = subjectById(topic.subject);
+const inTopic = videosInTopic(topic.id);
+const idx = inTopic.indexOf(video);
+const next = inTopic.slice(idx + 1).find((v) => v.kind === 'lesson');
+const quiz = video.kind === 'lesson' ? videos.find((v) => v.quizFor === video.slug) : undefined;
+const lesson = video.quizFor ? videoBySlug(video.quizFor) : undefined;
+const ksMain = video.keyStages[0];
+const ytUrl = video.kind === 'short' ? `https://www.youtube.com/shorts/${video.youtubeId}` : `https://www.youtube.com/watch?v=${video.youtubeId}`;
+const desc = video.kind === 'quiz'
+  ? `${video.fullTitle}. A ${ksLabel(video.keyStages)} Computing quiz video from Key Stage Learning.`
+  : `${video.fullTitle}. A free ${ksLabel(video.keyStages)} ${subject.name} lesson from Key Stage Learning.`;
+---
+<Base title={video.title} description={desc} active={ksMain}>
+  <div class:list={['page-hero', ksMain]} style="padding:32px 0 28px">
+    <div class="wrap">
+      <Crumbs items={[{ label: ksMain.toUpperCase(), href: `/${ksMain}/` }, { label: subject.name, href: `/${ksMain}/${subject.id}/` }, { label: topic.title, href: `/${subject.id}/${topic.id}/` }, { label: video.title }]} />
+      <h1 style="font-size:clamp(28px,4.5vw,46px)">{video.title}</h1>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        {video.keyStages.map((k) => <span class="badge" style="background:rgba(255,255,255,.22)">{k.toUpperCase()}</span>)}
+        {video.part && <span class="badge" style="background:rgba(255,255,255,.22)">Part {video.part}</span>}
+        {video.kind === 'quiz' && <span class="badge quiz">Bonus quiz · 20 questions</span>}
+        {video.kind === 'short' && <span class="badge short">Short</span>}
+      </div>
+    </div>
+  </div>
+
+  <section class="tight">
+    <div class="wrap watch">
+      <div>
+        <Player video={video} />
+        <div class="cta-row" data-pagefind-ignore>
+          {quiz && <a class="btn btn-yellow" href={`/watch/${quiz.slug}/`}>Take the quiz</a>}
+          {lesson && <a class="btn btn-navy" href={`/watch/${lesson.slug}/`}>Watch the lesson first</a>}
+          {next && <a class="btn btn-navy" href={`/watch/${next.slug}/`}>Watch next: {next.title}</a>}
+          <a class="btn" style="background:#fff;border:2px solid #e3dcf3" href={ytUrl} rel="noopener">Open on YouTube</a>
+        </div>
+      </div>
+
+      <aside>
+        <div class="panel">
+          <h2>About this video</h2>
+          <p style="margin:0 0 8px">{video.fullTitle}</p>
+          <p style="margin:0;color:var(--muted);font-size:16px">
+            {video.kind === 'quiz' ? 'Twenty questions to check what you remember. Pause the video to think before each answer.'
+              : `Part of the ${topic.title} topic in ${subject.name}, for ${ksLabel(video.keyStages)}.`}
+          </p>
+        </div>
+        <div class="panel">
+          <h2>More in {topic.title}</h2>
+          <ul class="next-list">
+            {inTopic.map((v) => (
+              <li>
+                {v === video ? (
+                  <span class="here" style="display:flex;gap:12px;align-items:center;font-weight:600;font-size:16px"><img src={thumb(v.youtubeId)} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" /><span>{v.title}<small>You are here</small></span></span>
+                ) : (
+                  <a href={`/watch/${v.slug}/`}><img src={thumb(v.youtubeId)} alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" /><span>{v.title}<small>{ksLabel(v.keyStages)}{v.kind === 'quiz' ? ' · Quiz' : ''}{v.kind === 'short' ? ' · Short' : ''}</small></span></a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>

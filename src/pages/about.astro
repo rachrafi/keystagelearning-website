@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { YT_CHANNEL } from '../data/links';
+---
+<Base title="About and privacy" description="Who makes Key Stage Learning, and what this website does and doesn't collect.">
+  <div class="page-hero">
+    <div class="wrap">
+      <Crumbs items={[{ label: 'About and privacy' }]} />
+      <h1>About and privacy</h1>
+      <p>Free, fun lessons for KS2, KS3 and GCSE, and a website that keeps children's information private.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap prose">
+      <h2>About Key Stage Learning</h2>
+      <p>Key Stage Learning makes short, story-led video lessons for children in KS2, KS3 and GCSE. We started with Computing and IT, matched to the England National Curriculum, and more subjects are on the way. All the videos are on our <a href={YT_CHANNEL} rel="noopener">YouTube channel</a>. This website puts them in order by key stage and topic.</p>
+
+      <h2>Privacy, in plain words</h2>
+      <ul>
+        <li><strong>We don't collect anything about you.</strong> There are no accounts, no sign-ups, no comments and no forms.</li>
+        <li><strong>No tracking cookies and no adverts</strong> on this website.</li>
+        <li><strong>Videos come from YouTube.</strong> Video pictures are loaded from YouTube's image server. The video player itself only loads when you press play, and it uses YouTube's privacy-enhanced mode. Once a video is playing, YouTube's own <a href="https://policies.google.com/privacy" rel="noopener">privacy policy</a> applies.</li>
+        <li><strong>Visit counts.</strong> If we count visits, we only use a tool that doesn't use cookies or identify anyone.</li>
+      </ul>
+      <p>Last updated: November 2026.</p>
+    </div>
+  </section>
+</Base>

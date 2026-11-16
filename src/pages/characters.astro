@@ -1,0 +1,23 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+---
+<Base title="Meet the characters" description="Pengbot, Aaliyah, Selma and Sneaky Sid: the characters in Key Stage Learning's lessons.">
+  <div class="page-hero">
+    <div class="wrap">
+      <Crumbs items={[{ label: 'Meet the characters' }]} />
+      <h1>Meet the characters</h1>
+      <p>Every lesson is a little adventure with friends you'll get to know, and one you should never trust.</p>
+    </div>
+  </div>
+  <section class="cast">
+    <div class="wrap">
+      <div class="cast-grid">
+        <div class="member"><div class="pic"><img src="/images/pengbot.png" alt="Pengbot, a robot penguin on wheels" /></div><h3>Pengbot</h3><div class="role">Robot penguin and helper</div><p>Pengbot loves gadgets, fish and fixing problems one step at a time.</p></div>
+        <div class="member"><div class="pic"><img src="/images/aaliyah.png" alt="Aaliyah in a purple hoodie and pink glasses" /></div><h3>Aaliyah</h3><div class="role">KS3 explorer</div><p>Aaliyah codes, films and runs the Penguin Times. She always asks why.</p></div>
+        <div class="member"><div class="pic"><img src="/images/selma.png" alt="Selma in a teal hoodie with a star" /></div><h3>Selma</h3><div class="role">KS2 adventurer</div><p>Aaliyah's little sister. Selma is seven and full of big questions.</p></div>
+        <div class="member"><div class="pic"><img src="/images/sid.png" alt="Sneaky Sid, a grey raccoon in a mask" /></div><h3>Sneaky Sid</h3><div class="role">The one to watch out for</div><p>Sid tries every trick to get your passwords. Learn to spot him!</p></div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,29 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { quizzes } from '../data/catalogue';
+const ks2 = quizzes.filter((q) => q.keyStages.includes('ks2'));
+const ks3 = quizzes.filter((q) => q.keyStages.includes('ks3'));
+---
+<Base title="Quizzes" description="Bonus quiz videos: 20 questions to check what you learned." active="quizzes">
+  <div class="page-hero">
+    <div class="wrap">
+      <Crumbs items={[{ label: 'Quizzes' }]} />
+      <h1>Bonus quizzes</h1>
+      <p>Twenty questions to check what stuck. Watch the lesson first, then pause the quiz before each answer and have a think.</p>
+    </div>
+  </div>
+  <section class="tight">
+    <div class="wrap">
+      <h2><span class="badge ks2" style="font-size:20px;padding:4px 14px">KS2</span> quizzes</h2>
+      <div class="video-grid">{ks2.map((v) => <VideoCard video={v} showTopic />)}</div>
+    </div>
+  </section>
+  <section class="tight white">
+    <div class="wrap">
+      <h2><span class="badge ks3" style="font-size:20px;padding:4px 14px">KS3</span> quizzes</h2>
+      <div class="video-grid">{ks3.map((v) => <VideoCard video={v} showTopic />)}</div>
+    </div>
+  </section>
+</Base>
