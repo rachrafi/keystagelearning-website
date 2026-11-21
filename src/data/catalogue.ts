@@ -52,13 +52,17 @@ export const topics: Topic[] = [
   { id: 'data-and-spreadsheets', subject: 'computing', twoPart: true, title: 'Data and Spreadsheets',
     blurb: "Collect data, put it in a table and let a spreadsheet do the sums, with Pengbot's Penguin Survey and Fish Fest." },
   { id: 'making-web-pages', subject: 'computing', twoPart: true, title: 'Making Web Pages',
-    blurb: "Build Pengbot's Penguin Website and learn what makes a web page clear and easy to use." },
+    blurb: "Build Pengbot's Penguin Website, then write real HTML and CSS as Aaliyah codes the Penguin Times." },
   { id: 'programming', subject: 'computing', twoPart: true, title: 'Programming',
     blurb: "From block code in Pengbot's Maze Game to typing real Python in the Python Quest." },
   { id: 'searching-and-sorting', subject: 'computing', twoPart: true, title: 'Searching and Sorting',
     blurb: 'How computers find things fast and put things in order, with Pengbot\'s Fish Hunt and Speedy Sort.' },
   { id: 'images-and-sound', subject: 'computing', twoPart: true, title: 'Images and Sound',
     blurb: 'How pictures and sounds are stored as numbers, and why some files are bigger than others.' },
+  { id: 'networks', subject: 'computing', twoPart: true, title: 'Networks',
+    blurb: "LANs, WANs, routers and switches as Pengbot connects Penguin School, then topologies, protocols and packets in Pengbot's Network Plan." },
+  { id: 'digital-media', subject: 'computing', twoPart: true, title: 'Digital Media',
+    blurb: "Plan and make great slides, photos and videos for Aaliyah's Big Presentation, then storyboards, file formats and editing for her Penguin Film." },
   { id: 'the-internet', subject: 'computing', title: 'The Internet',
     blurb: 'How the internet works: addresses, packets, servers, the padlock and the cloud.' },
   { id: 'online-safety', subject: 'computing', title: 'Online Safety',
@@ -71,8 +75,6 @@ export const topics: Topic[] = [
 
 /** Topics that are written or filmed but not on YouTube yet. Shown as "coming soon". */
 export const comingSoon: { subject: string; title: string }[] = [
-  { subject: 'computing', title: 'Networks' },
-  { subject: 'computing', title: 'Digital Media' },
   { subject: 'computing', title: 'Cyber Security' },
   { subject: 'computing', title: 'Healthy Tech' },
   { subject: 'computing', title: 'Rules, Laws and Ethics' },
@@ -117,6 +119,8 @@ export const videos: Video[] = [
   // Making Web Pages
   v('xl7Eur9VxVI', 'pengbots-penguin-website', "Pengbot's Penguin Website", "Making Web Pages (Part 1): Pengbot's Penguin Website", 'making-web-pages', ['ks2'], 'lesson', 1),
   v('7Pi-2TXsKgg', 'making-web-pages-part-1-quiz', 'Making Web Pages Part 1: Bonus Quiz', 'Making Web Pages (Part 1): Bonus Quiz, 20 Questions', 'making-web-pages', ['ks2'], 'quiz', 1, 'pengbots-penguin-website'),
+  v('JHVDKSg9SFU', 'aaliyah-codes-the-penguin-times', 'Aaliyah Codes the Penguin Times', 'Making Web Pages (Part 2): Aaliyah Codes the Penguin Times', 'making-web-pages', ['ks3'], 'lesson', 2),
+  v('0f2c2uEH1ww', 'making-web-pages-part-2-quiz', 'Making Web Pages Part 2: Bonus Quiz', 'Making Web Pages (Part 2): Bonus Quiz, 20 Questions', 'making-web-pages', ['ks3'], 'quiz', 2, 'aaliyah-codes-the-penguin-times'),
 
   // Programming
   v('6YPS8SPwU3o', 'pengbots-maze-game', "Pengbot's Maze Game", "Programming (Part 1): Pengbot's Maze Game", 'programming', ['ks2'], 'lesson', 1),
@@ -130,12 +134,25 @@ export const videos: Video[] = [
   v('Teunt17P4Ks', 'pengbots-pixel-paint', "Pengbot's Pixel Paint", "Images and Sound (Part 1): Pengbot's Pixel Paint", 'images-and-sound', ['ks2', 'ks3'], 'lesson', 1),
   v('NEVdNd8jS64', 'pengbots-file-size-challenge', "Pengbot's File Size Challenge", "Images and Sound (Part 2): Pengbot's File Size Challenge", 'images-and-sound', ['ks3'], 'lesson', 2),
 
+  // Networks
+  v('x3e-MBmUvjE', 'pengbot-connects-penguin-school', 'Pengbot Connects Penguin School', 'Networks (Part 1): Pengbot Connects Penguin School', 'networks', ['ks2'], 'lesson', 1),
+  v('jKL2YtCpV5E', 'networks-part-1-quiz', 'Networks Part 1: Bonus Quiz', 'Networks (Part 1): Bonus Quiz, 20 Questions', 'networks', ['ks2'], 'quiz', 1, 'pengbot-connects-penguin-school'),
+  v('3jv8BB3_WuU', 'pengbots-network-plan', "Pengbot's Network Plan", "Networks (Part 2): Pengbot's Network Plan", 'networks', ['ks3'], 'lesson', 2),
+  v('akVu-sv3drQ', 'networks-part-2-quiz', 'Networks Part 2: Bonus Quiz', 'Networks (Part 2): Bonus Quiz, 20 Questions', 'networks', ['ks3'], 'quiz', 2, 'pengbots-network-plan'),
+
+  // Digital Media
+  v('R6hjvvp0CXI', 'aaliyahs-big-presentation', "Aaliyah's Big Presentation", "Digital Media (Part 1): Aaliyah's Big Presentation", 'digital-media', ['ks2'], 'lesson', 1),
+  v('LNxg-vI0t9w', 'digital-media-part-1-quiz', 'Digital Media Part 1: Bonus Quiz', 'Digital Media (Part 1): Bonus Quiz, 20 Questions', 'digital-media', ['ks2'], 'quiz', 1, 'aaliyahs-big-presentation'),
+  v('dapIIVf1d6s', 'aaliyahs-penguin-film', "Aaliyah's Penguin Film", "Digital Media (Part 2): Aaliyah's Penguin Film", 'digital-media', ['ks3'], 'lesson', 2),
+  v('8oFK9TJdJic', 'digital-media-part-2-quiz', 'Digital Media Part 2: Bonus Quiz', 'Digital Media (Part 2): Bonus Quiz, 20 Questions', 'digital-media', ['ks3'], 'quiz', 2, 'aaliyahs-penguin-film'),
+
   // The Internet
   v('Ng3VuGsd3HI', 'what-is-the-internet', "What Is the Internet? The Internet's Big Address Book", "What Is the Internet? The Internet's Big Address Book", 'the-internet', ['ks2']),
   v('CWalMmrOUos', 'the-great-packet-puzzle', 'Packets: The Great Packet Puzzle', 'Packets: The Great Packet Puzzle', 'the-internet', ['ks2']),
   v('DRdNJPKvCq0', 'ip-addresses', 'IP Addresses: The Amazing Address Adventure', 'IP Addresses: The Amazing Address Adventure', 'the-internet', ['ks2', 'ks3']),
   v('i4-fBLV9jVI', 'the-server-cafe', 'Clients, Servers and Bandwidth: The Server Café', 'Clients, Servers and Bandwidth: The Server Café', 'the-internet', ['ks2']),
   v('ZSmHxN0TzP0', 'http-vs-https', 'HTTP vs HTTPS: The Secret of the Little Padlock', 'HTTP vs HTTPS: The Secret of the Little Padlock', 'the-internet', ['ks2', 'ks3']),
+  v('61KwELxUN5w', 'why-the-internet-chops-your-photo', 'Why the Internet Chops Your Photo into Pieces', 'Why the internet chops your photo into pieces', 'the-internet', ['ks2'], 'short'),
   v('vmMqH4lty9s', 'the-cloud', "The Cloud: Where Do Aaliyah's Photos Live?", "The Cloud: Where Do Aaliyah's Photos Live?", 'the-internet', ['ks2', 'ks3']),
 
   // Online Safety
@@ -166,6 +183,9 @@ export const videos: Video[] = [
 
 // Newest uploads first, in the order YouTube lists them.
 export const newestFirst: string[] = [
+  'digital-media-part-2-quiz', 'aaliyahs-penguin-film', 'digital-media-part-1-quiz', 'aaliyahs-big-presentation',
+  'networks-part-2-quiz', 'pengbots-network-plan', 'networks-part-1-quiz', 'pengbot-connects-penguin-school',
+  'why-the-internet-chops-your-photo', 'making-web-pages-part-2-quiz', 'aaliyah-codes-the-penguin-times',
   'making-web-pages-part-1-quiz', 'pengbots-penguin-website', 'data-and-spreadsheets-part-2-quiz',
   'pengbots-fish-fest-spreadsheet', 'real-email-or-phish', 'data-and-spreadsheets-part-1-quiz',
   'pengbots-penguin-survey', 'hardware-and-software-part-2-quiz', 'pengbots-processor-power',
