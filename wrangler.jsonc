@@ -4,11 +4,12 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "keystagelearning",
   "compatibility_date": "2026-11-17",
-  "assets": {
-    "not_found_handling": "404-page"
-  },
   // The site answers on www.keystagelearning.org. The bare .org address and both .net
   // addresses are sent here by Cloudflare redirect rules (set up in the dashboard).
   "routes": [{ "pattern": "www.keystagelearning.org", "custom_domain": true }],
+  // Accounts and sign-in. Cloudflare creates the database on the first deploy.
+  "d1_databases": [{ "binding": "DB", "database_name": "keystagelearning" }],
+  // Sign-in emails, sent with Cloudflare Email Sending from keystagelearning.org.
+  "send_email": [{ "name": "EMAIL" }],
   "observability": { "enabled": true }
 }

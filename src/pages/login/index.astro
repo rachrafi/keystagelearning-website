@@ -1,0 +1,70 @@
+---
+import Base from '../../layouts/Base.astro';
+import { cleanEmail, requestLink } from '../../lib/auth';
+export const prerender = false;
+
+if (Astro.locals.user) return Astro.redirect('/account/');
+
+let state: 'form' | 'sent' | 'slow-down' | 'error' = 'form';
+let email = '';
+let problem = '';
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  email = String(form.get('email') ?? '').trim();
+  const clean = cleanEmail(email);
+  if (!clean) problem = 'Please check the email address. It should look like name@example.com.';
+  else if (form.get('adult') !== 'yes') problem = 'Accounts are for grown-ups. Please ask a parent, carer or teacher to sign in.';
+  else {
+    try {
+      state = await requestLink(clean, Astro.request.headers.get('cf-connecting-ip'));
+      email = clean;
+    } catch (e) {
+      console.error('sign-in email failed', (e as any)?.code, (e as Error).message);
+      state = 'error';
+    }
+  }
+}
+---
+<Base title="Sign in" description="Sign in to Key Stage Learning with a link sent to your email." noindex>
+  <div class="page-hero">
+    <div class="wrap">
+      <h1>Sign in</h1>
+      <p>No password needed. We'll email you a link that signs you in.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="form-card">
+        {state === 'sent' ? (
+          <div role="status">
+            <h2>Check your email</h2>
+            <p>We've sent a sign-in link to <strong>{email}</strong>. Open it on this device to sign in.</p>
+            <p class="hint">It can take a minute to arrive. If you can't see it, check your spam or junk folder. The link stops working after 15 minutes.</p>
+            <p><a href="/login/">Use a different email address</a></p>
+          </div>
+        ) : state === 'slow-down' ? (
+          <div role="status">
+            <h2>Please wait a few minutes</h2>
+            <p>We've already sent a few sign-in links. Check your email (and the spam folder) for the latest one, or try again in 15 minutes.</p>
+          </div>
+        ) : state === 'error' ? (
+          <div role="alert">
+            <h2>Sorry, we couldn't send the email</h2>
+            <p>Something went wrong on our side. Please try again in a few minutes. If it keeps happening, email <a href="mailto:support@keystagelearning.org">support@keystagelearning.org</a>.</p>
+            <p><a href="/login/">Try again</a></p>
+          </div>
+        ) : (
+          <form method="post">
+            <label for="email">Your email address</label>
+            <input id="email" name="email" type="email" autocomplete="email" required value={email} aria-describedby={problem ? 'problem' : undefined} />
+            <label class="check"><input type="checkbox" name="adult" value="yes" required /> I'm a parent, carer or teacher, aged 18 or over</label>
+            {problem && <p id="problem" class="problem" role="alert">{problem}</p>}
+            <button class="btn btn-navy" type="submit">Email me a sign-in link</button>
+            <p class="hint">Accounts are for grown-ups. We only keep your email address and when you signed in, never anything about children. See <a href="/about/">About and privacy</a>.</p>
+          </form>
+        )}
+      </div>
+    </div>
+  </section>
+</Base>

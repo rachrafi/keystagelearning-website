@@ -1,0 +1,49 @@
+---
+import Base from '../../layouts/Base.astro';
+import { linkIsValid, useLink, SESSION_COOKIE, cookieOptions } from '../../lib/auth';
+export const prerender = false;
+
+// Opening the link only shows a button; pressing it signs in. Some email
+// services open every link in a message to check it, and this stops them
+// using up the one-time link before the real person gets there.
+let token = '';
+let ok = false;
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  token = String(form.get('token') ?? '');
+  const session = await useLink(token, Astro.request.headers.get('user-agent'));
+  if (session) {
+    Astro.cookies.set(SESSION_COOKIE, session, cookieOptions);
+    return Astro.redirect('/account/?welcome=1', 303);
+  }
+} else {
+  token = Astro.url.searchParams.get('token') ?? '';
+  ok = await linkIsValid(token);
+}
+Astro.response.headers.set('Referrer-Policy', 'no-referrer');
+---
+<Base title="Sign in" description="Finish signing in to Key Stage Learning." noindex>
+  <div class="page-hero">
+    <div class="wrap">
+      <h1>{ok ? 'Almost there' : 'This link has expired'}</h1>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      <div class="form-card">
+        {ok ? (
+          <form method="post">
+            <input type="hidden" name="token" value={token} />
+            <p>Press the button to finish signing in on this device.</p>
+            <button class="btn btn-navy" type="submit">Sign me in</button>
+          </form>
+        ) : (
+          <div>
+            <p>Sign-in links work once and only for 15 minutes. This one has been used or has run out.</p>
+            <p><a class="btn btn-navy" href="/login/">Send me a new link</a></p>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+</Base>

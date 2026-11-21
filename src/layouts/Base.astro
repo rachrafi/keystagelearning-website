@@ -26,6 +26,7 @@ const cur = (k: string) => (active === k ? 'page' : undefined);
   <meta property="og:description" content={description} />
   <meta property="og:image" content={new URL('/images/logo-256.png', canonical)} />
   <meta name="theme-color" content="#291a6d" />
+  {Astro.props.noindex && <meta name="robots" content="noindex" />}
 </head>
 <body>
   <a class="skip" href="#main">Skip to the main content</a>

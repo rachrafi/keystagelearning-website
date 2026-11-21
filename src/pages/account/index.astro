@@ -1,0 +1,62 @@
+---
+import Base from '../../layouts/Base.astro';
+import { devices, signOut, deleteAccount, SESSION_COOKIE } from '../../lib/auth';
+export const prerender = false;
+
+const user = Astro.locals.user;
+if (!user) return Astro.redirect('/login/');
+
+if (Astro.request.method === 'POST') {
+  const form = await Astro.request.formData();
+  const action = form.get('action');
+  const session = Astro.cookies.get(SESSION_COOKIE)?.value;
+  if (action === 'sign-out' || action === 'sign-out-everywhere') {
+    await signOut(session, action === 'sign-out-everywhere');
+    Astro.cookies.delete(SESSION_COOKIE, { path: '/' });
+    return Astro.redirect('/?signed-out=1', 303);
+  }
+  if (action === 'delete' && form.get('confirm') === user.email) {
+    await deleteAccount(user.id);
+    Astro.cookies.delete(SESSION_COOKIE, { path: '/' });
+    return Astro.redirect('/?account-deleted=1', 303);
+  }
+}
+
+const list = await devices(user.id);
+const welcome = Astro.url.searchParams.has('welcome');
+const day = (t: number) => new Date(t * 1000).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<Base title="Your account" description="Your Key Stage Learning account." noindex>
+  <div class="page-hero">
+    <div class="wrap">
+      <h1>{welcome ? "You're signed in" : 'Your account'}</h1>
+      <p>Signed in as <strong>{user.email}</strong></p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap prose">
+      <h2>Membership</h2>
+      <p>Memberships are coming soon. When they open, you'll be able to join and manage your membership here.</p>
+
+      <h2>Signed-in devices</h2>
+      <ul>
+        {list.map((d) => <li>{d.device}, since {day(d.created_at)}</li>)}
+      </ul>
+      <form method="post" class="row">
+        <button class="btn btn-navy" name="action" value="sign-out">Sign out</button>
+        {list.length > 1 && <button class="btn btn-ghost-dark" name="action" value="sign-out-everywhere">Sign out on all devices</button>}
+      </form>
+
+      <h2>Delete your account</h2>
+      <details>
+        <summary>Delete my account and everything we hold about me</summary>
+        <form method="post">
+          <p>This deletes your email address and sign-in history straight away. It can't be undone.</p>
+          <label for="confirm">Type your email address to confirm</label>
+          <input id="confirm" name="confirm" type="email" autocomplete="off" required />
+          <button class="btn btn-danger" name="action" value="delete">Delete my account</button>
+        </form>
+      </details>
+    </div>
+  </section>
+</Base>
