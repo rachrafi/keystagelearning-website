@@ -7,7 +7,8 @@ export interface User { id: number; email: string; created_at: number }
 
 interface Env {
   DB: D1Database;
-  EMAIL: { send(msg: { from: string | { email: string; name: string }; to: string; subject: string; html: string; text: string }): Promise<{ messageId: string }> };
+  /** Resend API key, stored as a secret in the Cloudflare dashboard. */
+  RESEND_API_KEY?: string;
 }
 const E = env as unknown as Env;
 
@@ -15,7 +16,7 @@ export const SESSION_COOKIE = 'ksl_session';
 export const SESSION_DAYS = 30;
 const LINK_MINUTES = 15;
 const SITE = 'https://www.keystagelearning.org';
-const FROM = { email: 'signin@keystagelearning.org', name: 'Key Stage Learning' };
+const FROM = 'Key Stage Learning <signin@keystagelearning.org>';
 
 const now = () => Math.floor(Date.now() / 1000);
 
@@ -91,8 +92,7 @@ export async function requestLink(email: string, ip: string | null): Promise<'se
   ]);
 
   const link = `${SITE}/login/verify/?token=${token}`;
-  await E.EMAIL.send({
-    from: FROM,
+  await sendEmail({
     to: email,
     subject: 'Your Key Stage Learning sign-in link',
     text: `Hello,\n\nUse this link to sign in to Key Stage Learning:\n${link}\n\nIt works once and stops working after ${LINK_MINUTES} minutes.\n\nIf you didn't ask to sign in, you can ignore this email. Nobody can sign in without the link.\n\nKey Stage Learning\n${SITE}\n`,
@@ -109,6 +109,22 @@ export async function requestLink(email: string, ip: string | null): Promise<'se
 </td></tr></table></td></tr></table></body></html>`,
   });
   return 'sent';
+}
+
+// Sign-in emails go out through Resend (resend.com), EU region.
+// In `npm run dev` without a key, the email is printed to the console instead.
+async function sendEmail(msg: { to: string; subject: string; text: string; html: string }): Promise<void> {
+  if (!E.RESEND_API_KEY) {
+    if (!import.meta.env.DEV) throw new Error('RESEND_API_KEY is not set');
+    console.log(`[email not sent: no RESEND_API_KEY]\nTo: ${msg.to}\nSubject: ${msg.subject}\n\n${msg.text}`);
+    return;
+  }
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${E.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ from: FROM, to: [msg.to], subject: msg.subject, text: msg.text, html: msg.html }),
+  });
+  if (!res.ok) throw new Error(`Resend ${res.status}: ${(await res.text()).slice(0, 300)}`);
 }
 
 // ---------- step 2: the link is pressed ----------

@@ -9,7 +9,7 @@
   "routes": [{ "pattern": "www.keystagelearning.org", "custom_domain": true }],
   // Accounts and sign-in. Cloudflare creates the database on the first deploy.
   "d1_databases": [{ "binding": "DB", "database_name": "keystagelearning" }],
-  // Sign-in emails, sent with Cloudflare Email Sending from keystagelearning.org.
-  "send_email": [{ "name": "EMAIL" }],
+  // Sign-in emails go through Resend; its key is the RESEND_API_KEY secret,
+  // added in the dashboard (Settings → Variables and Secrets), never in this file.
   "observability": { "enabled": true }
 }
