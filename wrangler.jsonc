@@ -1,0 +1,14 @@
+// Cloudflare settings for keystagelearning.org.
+// `npm run build` turns this into dist/client/wrangler.json, and `npm run deploy` uploads that.
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "keystagelearning",
+  "compatibility_date": "2026-11-17",
+  "assets": {
+    "not_found_handling": "404-page"
+  },
+  // The site answers on www.keystagelearning.org. The bare .org address and both .net
+  // addresses are sent here by Cloudflare redirect rules (set up in the dashboard).
+  "routes": [{ "pattern": "www.keystagelearning.org", "custom_domain": true }],
+  "observability": { "enabled": true }
+}
