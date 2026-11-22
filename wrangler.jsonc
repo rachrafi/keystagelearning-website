@@ -11,5 +11,11 @@
   "d1_databases": [{ "binding": "DB", "database_name": "keystagelearning" }],
   // Sign-in emails go through Resend; its key is the RESEND_API_KEY secret,
   // added in the dashboard (Settings → Variables and Secrets), never in this file.
+  // Stripe price ids (not secret). These are the TEST (sandbox) prices; swap for the live ones at launch.
+  // The secret key and webhook secret are Cloudflare Secrets: STRIPE_SECRET_KEY, STRIPE_WEBHOOK_SECRET.
+  "vars": {
+    "STRIPE_PRICE_MONTHLY": "price_1UedkAFxeUeyrBdVEU1eNJJI",
+    "STRIPE_PRICE_YEARLY": "price_1UedqmFxeUeyrBdV520G46kL"
+  },
   "observability": { "enabled": true }
 }

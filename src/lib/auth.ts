@@ -25,7 +25,7 @@ let ready: Promise<void> | null = null;
 export function db(): D1Database {
   return E.DB;
 }
-async function schema() {
+export async function schema() {
   ready ??= E.DB.batch([
     E.DB.prepare(`CREATE TABLE IF NOT EXISTS users (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -46,6 +46,16 @@ async function schema() {
     E.DB.prepare('CREATE INDEX IF NOT EXISTS sessions_user ON sessions(user_id)'),
     E.DB.prepare(`CREATE TABLE IF NOT EXISTS login_attempts (key TEXT NOT NULL, at INTEGER NOT NULL)`),
     E.DB.prepare('CREATE INDEX IF NOT EXISTS login_attempts_key ON login_attempts(key, at)'),
+    // One row per grown-up who has started paying (or tried to). Filled in by Stripe's messages.
+    E.DB.prepare(`CREATE TABLE IF NOT EXISTS memberships (
+      user_id INTEGER PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
+      stripe_customer_id TEXT NOT NULL UNIQUE,
+      stripe_subscription_id TEXT,
+      status TEXT NOT NULL DEFAULT 'none',
+      price_id TEXT,
+      current_period_end INTEGER,
+      cancel_at_period_end INTEGER NOT NULL DEFAULT 0,
+      updated_at INTEGER NOT NULL)`),
   ]).then(() => undefined).catch((e) => { ready = null; throw e; });
   return ready;
 }
@@ -186,7 +196,8 @@ export async function deleteAccount(userId: number): Promise<void> {
   const u = await E.DB.prepare('SELECT email FROM users WHERE id = ?').bind(userId).first<{ email: string }>();
   await E.DB.batch([
     E.DB.prepare('DELETE FROM sessions WHERE user_id = ?').bind(userId),
-    ...(u ? [E.DB.prepare('DELETE FROM login_tokens WHERE email = ?').bind(u.email)] : []),
+    E.DB.prepare('DELETE FROM memberships WHERE user_id = ?').bind(userId),
+    ...(u ?[E.DB.prepare('DELETE FROM login_tokens WHERE email = ?').bind(u.email)] : []),
     E.DB.prepare('DELETE FROM users WHERE id = ?').bind(userId),
   ]);
 }

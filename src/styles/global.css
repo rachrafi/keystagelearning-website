@@ -223,3 +223,13 @@ form.row { display: flex; flex-wrap: wrap; gap: 14px; margin: 8px 0 12px; }
 .btn-danger { background: #b3261e; color: #fff; box-shadow: 0 5px 0 #7d1a15; }
 details summary { cursor: pointer; font-weight: 700; font-size: 18px; color: var(--navy); }
 details form { margin-top: 16px; }
+
+/* membership plans */
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 22px; max-width: 760px; margin-bottom: 28px; }
+.plan { position: relative; background: var(--paper); border-radius: var(--radius); padding: 28px; box-shadow: 0 8px 24px rgba(29,17,80,.08); border: 3px solid transparent; }
+.plan.best { border-color: var(--yellow); }
+.plan h2 { margin: 0 0 6px; font-size: 26px; }
+.plan .amount { font-size: 20px; margin: 0 0 20px; }
+.plan .amount strong { font-size: 34px; }
+.plan .tag { position: absolute; top: -14px; right: 20px; background: var(--yellow); color: var(--navy-deep); font-weight: 800; font-size: 14px; padding: 4px 12px; border-radius: 999px; }
+.notice { background: #e7f7ee; color: #14532d; padding: 14px 18px; border-radius: 14px; font-weight: 600; max-width: 760px; }

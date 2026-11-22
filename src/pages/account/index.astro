@@ -1,10 +1,16 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { devices, signOut, deleteAccount, SESSION_COOKIE } from '../../lib/auth';
+import { membership, billingPortal, PLANS } from '../../lib/billing';
 export const prerender = false;
 
 const user = Astro.locals.user;
 if (!user) return Astro.redirect('/login/');
+
+const m = await membership(user.id);
+// A Stripe subscription still exists (even if it's set to end): it must be stopped before deleting the account.
+const hasSubscription = !['none', 'canceled', 'incomplete_expired'].includes(m.status);
+let problem = '';
 
 if (Astro.request.method === 'POST') {
   const form = await Astro.request.formData();
@@ -15,28 +21,65 @@ if (Astro.request.method === 'POST') {
     Astro.cookies.delete(SESSION_COOKIE, { path: '/' });
     return Astro.redirect('/?signed-out=1', 303);
   }
-  if (action === 'delete' && form.get('confirm') === user.email) {
-    await deleteAccount(user.id);
-    Astro.cookies.delete(SESSION_COOKIE, { path: '/' });
-    return Astro.redirect('/?account-deleted=1', 303);
+  if (action === 'manage') {
+    try {
+      return Astro.redirect(await billingPortal(user), 303);
+    } catch (e) {
+      console.error('billing portal failed', (e as Error).message);
+      problem = "Sorry, we couldn't open the membership page. Please try again in a few minutes.";
+    }
+  }
+  if (action === 'delete') {
+    if (hasSubscription) {
+      problem = 'Please stop your membership first (Manage membership → Cancel). You can delete your account once it has ended.';
+    } else if (String(form.get('confirm') ?? '').trim().toLowerCase() === user.email) {
+      await deleteAccount(user.id);
+      Astro.cookies.delete(SESSION_COOKIE, { path: '/' });
+      return Astro.redirect('/?account-deleted=1', 303);
+    } else {
+      problem = "The email address didn't match, so nothing was deleted.";
+    }
   }
 }
 
 const list = await devices(user.id);
 const welcome = Astro.url.searchParams.has('welcome');
+const joined = Astro.url.searchParams.has('joined');
 const day = (t: number) => new Date(t * 1000).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 ---
 <Base title="Your account" description="Your Key Stage Learning account." noindex>
   <div class="page-hero">
     <div class="wrap">
-      <h1>{welcome ? "You're signed in" : 'Your account'}</h1>
+      <h1>{joined ? 'Welcome, member!' : welcome ? "You're signed in" : 'Your account'}</h1>
       <p>Signed in as <strong>{user.email}</strong></p>
     </div>
   </div>
   <section>
     <div class="wrap prose">
+      {problem && <p class="problem" role="alert">{problem}</p>}
+
       <h2>Membership</h2>
-      <p>Memberships are coming soon. When they open, you'll be able to join and manage your membership here.</p>
+      {m.active ? (
+        <div>
+          <p>
+            <strong>You're a member</strong>{m.plan && <> ({PLANS[m.plan].label.toLowerCase()}, {PLANS[m.plan].price} {PLANS[m.plan].per})</>}.
+            {m.current_period_end && (m.cancel_at_period_end
+              ? <> Your membership ends on <strong>{day(m.current_period_end)}</strong> and won't renew.</>
+              : <> It renews on {day(m.current_period_end)}.</>)}
+          </p>
+          {m.status === 'past_due' && <p class="problem">Your last payment didn't go through. Please update your card so your membership carries on.</p>}
+          <form method="post"><button class="btn btn-navy" name="action" value="manage">Manage membership</button></form>
+          <p class="hint">Change your plan or card, see receipts, or cancel. This opens Stripe, our payment provider.</p>
+        </div>
+      ) : joined ? (
+        <p role="status">Thank you! We're just confirming your payment. Refresh this page in a few seconds.</p>
+      ) : (
+        <div>
+          <p>You're not a member yet. Members can watch every lesson and quiz.</p>
+          <p><a class="btn btn-navy" href="/join/">See membership options</a></p>
+          {hasSubscription && <form method="post"><button class="btn btn-ghost-dark" name="action" value="manage">Manage billing</button></form>}
+        </div>
+      )}
 
       <h2>Signed-in devices</h2>
       <ul>
@@ -51,7 +94,7 @@ const day = (t: number) => new Date(t * 1000).toLocaleDateString('en-GB', { day:
       <details>
         <summary>Delete my account and everything we hold about me</summary>
         <form method="post">
-          <p>This deletes your email address and sign-in history straight away. It can't be undone.</p>
+          <p>This deletes your email address, sign-in history and membership record straight away. It can't be undone. Stripe keeps payment records it must hold by law.</p>
           <label for="confirm">Type your email address to confirm</label>
           <input id="confirm" name="confirm" type="email" autocomplete="off" required />
           <button class="btn btn-danger" name="action" value="delete">Delete my account</button>

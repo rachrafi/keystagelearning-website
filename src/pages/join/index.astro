@@ -1,0 +1,66 @@
+---
+import Base from '../../layouts/Base.astro';
+import { membership, startCheckout, PLANS, type Plan } from '../../lib/billing';
+export const prerender = false;
+
+const user = Astro.locals.user;
+const member = user ? await membership(user.id) : null;
+let problem = '';
+
+if (Astro.request.method === 'POST') {
+  if (!user) return Astro.redirect('/login/', 303);
+  if (member?.active) return Astro.redirect('/account/', 303);
+  const plan = String((await Astro.request.formData()).get('plan')) as Plan;
+  if (plan in PLANS) {
+    try {
+      return Astro.redirect(await startCheckout(user, plan), 303);
+    } catch (e) {
+      console.error('checkout failed', (e as Error).message);
+      problem = "Sorry, we couldn't open the payment page. Please try again in a few minutes.";
+    }
+  }
+}
+const cancelled = Astro.url.searchParams.has('cancelled');
+---
+<Base title="Join" description="Become a Key Stage Learning member: every lesson and quiz for KS2 and KS3." noindex>
+  <div class="page-hero">
+    <div class="wrap">
+      <h1>Become a member</h1>
+      <p>Every lesson and every quiz for KS2 and KS3, with new videos every week. No adverts, ever.</p>
+    </div>
+  </div>
+  <section>
+    <div class="wrap">
+      {cancelled && <p class="notice" role="status">No problem, you haven't been charged. You can join whenever you're ready.</p>}
+      {problem && <p class="problem" role="alert">{problem}</p>}
+      {member?.active ? (
+        <div class="form-card">
+          <h2>You're already a member</h2>
+          <p><a class="btn btn-navy" href="/account/">Go to your account</a></p>
+        </div>
+      ) : (
+        <div class="plans">
+          {(Object.keys(PLANS) as Plan[]).map((p) => (
+            <form method="post" class={`plan ${p === 'yearly' ? 'best' : ''}`}>
+              {p === 'yearly' && <span class="tag">2 months free</span>}
+              <h2>{PLANS[p].label}</h2>
+              <p class="amount"><strong>{PLANS[p].price}</strong> {PLANS[p].per}</p>
+              <input type="hidden" name="plan" value={p} />
+              {user
+                ? <button class="btn btn-navy" type="submit">Choose {PLANS[p].label.toLowerCase()}</button>
+                : <a class="btn btn-navy" href="/login/">Sign in to join</a>}
+            </form>
+          ))}
+        </div>
+      )}
+      <div class="prose">
+        <ul>
+          <li>For parents, carers and teachers. One membership covers your whole household.</li>
+          <li>Pay securely with Stripe. We never see your card details.</li>
+          <li>Stop any time from your account page. Your membership runs to the end of the period you've paid for.</li>
+        </ul>
+        {!user && <p>New here? Signing in creates your account. We'll email you a link, with no password needed.</p>}
+      </div>
+    </div>
+  </section>
+</Base>
