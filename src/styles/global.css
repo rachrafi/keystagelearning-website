@@ -241,3 +241,6 @@ details form { margin-top: 16px; }
 .player-gate .row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 .badge.free { background: #2dc26b; color: #fff; }
 .badge.members { background: var(--yellow); color: var(--navy-deep); }
+/* when the player shows a message instead of a video, let it grow to fit (small phones) */
+.player:has(.player-gate) { aspect-ratio: auto; min-height: 260px; }
+.player:has(.player-gate) .player-gate { position: relative; inset: auto; min-height: 260px; padding: 32px 20px; box-sizing: border-box; }
