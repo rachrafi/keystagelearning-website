@@ -50,7 +50,7 @@ const note = !MEMBERSHIPS_LIVE
     const button = p.querySelector('button')!;
     button.addEventListener('click', async () => {
       button.disabled = true;
-      const preview = new URLSearchParams(location.search).get('preview');
+      const preview = new URLSearchParams(location.search).get('preview') ?? (document.cookie.includes('ksl_preview=members') ? 'members' : null);
       let answer: Answer = { mode: 'error' };
       try {
         const res = await fetch(`/api/play/${p.dataset.slug}/${preview ? `?preview=${encodeURIComponent(preview)}` : ''}`, { method: 'POST', credentials: 'same-origin' });

@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+// A private test page: turns "members preview" on or off for this browser only,
+// so the new player can be tried before memberships launch. Not linked anywhere.
+---
+<Base title="Members preview" description="Test page." noindex>
+  <div class="page-hero"><div class="wrap"><h1>Members preview</h1><p>Try the new video player before memberships launch. This only affects this browser.</p></div></div>
+  <section>
+    <div class="wrap prose">
+      <p id="state" role="status"></p>
+      <p class="row" style="display:flex;gap:12px;flex-wrap:wrap">
+        <button class="btn btn-navy" id="on" type="button">Turn preview on</button>
+        <button class="btn btn-ghost-dark" id="off" type="button">Turn preview off</button>
+      </p>
+      <h2>Try these</h2>
+      <ul>
+        <li><a href="/watch/pengbots-gadget-lab/">Pengbot's Gadget Lab</a>: free taster, plays for everyone</li>
+        <li><a href="/watch/the-password-fortress/">The Password Fortress</a>: Online Safety, free</li>
+        <li><a href="/watch/pengbots-python-quest/">Pengbot's Python Quest</a>: members only</li>
+        <li><a href="/watch/hardware-and-software-part-1-quiz/">Hardware and Software Part 1: Bonus Quiz</a>: members only</li>
+        <li><a href="/account/">Your account</a> · <a href="/join/">Join page</a></li>
+      </ul>
+    </div>
+  </section>
+  <script>
+    const state = document.getElementById('state')!;
+    const show = () => { state.textContent = document.cookie.includes('ksl_preview=members') ? 'Preview is ON in this browser.' : 'Preview is OFF in this browser.'; };
+    document.getElementById('on')!.onclick = () => { document.cookie = 'ksl_preview=members; path=/; max-age=2592000; samesite=lax; secure'; show(); };
+    document.getElementById('off')!.onclick = () => { document.cookie = 'ksl_preview=; path=/; max-age=0'; show(); };
+    show();
+  </script>
+</Base>
