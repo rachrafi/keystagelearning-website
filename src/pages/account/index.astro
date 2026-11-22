@@ -1,6 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
-import { devices, signOut, deleteAccount, SESSION_COOKIE } from '../../lib/auth';
+import { devices, signOut, deleteAccount, SESSION_COOKIE, MAX_DEVICES } from '../../lib/auth';
+import { MAX_PLAYING } from '../../lib/playback';
 import { membership, billingPortal, PLANS } from '../../lib/billing';
 export const prerender = false;
 
@@ -82,6 +83,7 @@ const day = (t: number) => new Date(t * 1000).toLocaleDateString('en-GB', { day:
       )}
 
       <h2>Signed-in devices</h2>
+      <p class="hint">You can be signed in on up to {MAX_DEVICES} devices, and watch on {MAX_PLAYING} of them at the same time. Signing in on another device signs out the one you signed in on longest ago.</p>
       <ul>
         {list.map((d) => <li>{d.device}, since {day(d.created_at)}</li>)}
       </ul>

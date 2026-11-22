@@ -14,6 +14,7 @@ const E = env as unknown as Env;
 
 export const SESSION_COOKIE = 'ksl_session';
 export const SESSION_DAYS = 30;
+export const MAX_DEVICES = 3;
 const LINK_MINUTES = 15;
 const SITE = 'https://www.keystagelearning.org';
 const FROM = 'Key Stage Learning <signin@keystagelearning.org>';
@@ -65,6 +66,8 @@ function randomToken(): string {
   const b = crypto.getRandomValues(new Uint8Array(32));
   return btoa(String.fromCharCode(...b)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 }
+/** A stable, private id for this device's sign-in (the hash of its cookie). */
+export const sessionKey = (session: string) => sha256(`session:${session}`);
 async function sha256(s: string): Promise<string> {
   const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
   return [...new Uint8Array(d)].map((x) => x.toString(16).padStart(2, '0')).join('');
@@ -160,8 +163,14 @@ export async function useLink(token: string, userAgent: string | null): Promise<
       ON CONFLICT(email) DO UPDATE SET last_login_at = excluded.last_login_at RETURNING id`)
     .bind(row.email, t, t).first<{ id: number }>();
   const session = randomToken();
-  await E.DB.prepare('INSERT INTO sessions (id_hash, user_id, created_at, expires_at, device) VALUES (?, ?, ?, ?, ?)')
-    .bind(await sha256(session), user!.id, t, t + SESSION_DAYS * 86400, deviceName(userAgent)).run();
+  await E.DB.batch([
+    E.DB.prepare('INSERT INTO sessions (id_hash, user_id, created_at, expires_at, device) VALUES (?, ?, ?, ?, ?)')
+      .bind(await sha256(session), user!.id, t, t + SESSION_DAYS * 86400, deviceName(userAgent)),
+    // Keep only the newest MAX_DEVICES signed-in devices: signing in on another signs out the oldest.
+    E.DB.prepare(`DELETE FROM sessions WHERE user_id = ? AND id_hash NOT IN
+        (SELECT id_hash FROM sessions WHERE user_id = ? ORDER BY created_at DESC, rowid DESC LIMIT ?)`)
+      .bind(user!.id, user!.id, MAX_DEVICES),
+  ]);
   return session;
 }
 

@@ -203,3 +203,8 @@ export const thumb = (id: string) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg
 export const quizzes = videos.filter((x) => x.kind === 'quiz');
 export const lessonCount = (subjectId: string) =>
   videos.filter((x) => topicById(x.topic).subject === subjectId && x.kind !== 'quiz').length;
+
+// ---------- memberships ----------
+/** Free for everyone: every Short, every Online Safety lesson, and the first lesson of each topic. */
+export const isFree = (v: Video): boolean =>
+  v.kind === 'short' || v.topic === 'online-safety' || videosInTopic(v.topic).find((x) => x.kind === 'lesson') === v;

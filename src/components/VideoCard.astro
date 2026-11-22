@@ -1,5 +1,6 @@
 ---
-import { type Video, thumb, topicById } from '../data/catalogue';
+import { type Video, thumb, topicById, isFree } from '../data/catalogue';
+import { MEMBERSHIPS_LIVE } from '../data/links';
 interface Props { video: Video; showTopic?: boolean }
 const { video, showTopic = false } = Astro.props;
 const topic = topicById(video.topic);
@@ -17,6 +18,7 @@ const topic = topicById(video.topic);
       {video.part && <span class="badge part">Part {video.part}</span>}
       {video.kind === 'quiz' && <span class="badge quiz">Quiz</span>}
       {video.kind === 'short' && <span class="badge short">Short</span>}
+      {MEMBERSHIPS_LIVE && (isFree(video) ? <span class="badge free">Free</span> : <span class="badge members">Members</span>)}
     </div>
   </div>
 </a>

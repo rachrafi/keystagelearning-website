@@ -2,7 +2,8 @@
 import Base from '../../layouts/Base.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import Player from '../../components/Player.astro';
-import { videos, topicById, subjectById, videosInTopic, videoBySlug, thumb, ksLabel } from '../../data/catalogue';
+import { videos, topicById, subjectById, videosInTopic, videoBySlug, thumb, ksLabel, isFree } from '../../data/catalogue';
+import { MEMBERSHIPS_LIVE } from '../../data/links';
 
 export function getStaticPaths() {
   return videos.map((v) => ({ params: { slug: v.slug } }));
@@ -17,9 +18,12 @@ const quiz = video.kind === 'lesson' ? videos.find((v) => v.quizFor === video.sl
 const lesson = video.quizFor ? videoBySlug(video.quizFor) : undefined;
 const ksMain = video.keyStages[0];
 const ytUrl = video.kind === 'short' ? `https://www.youtube.com/shorts/${video.youtubeId}` : `https://www.youtube.com/watch?v=${video.youtubeId}`;
+const free = isFree(video);
+// Once memberships are live, members' videos are no longer linked to YouTube.
+const showYouTube = !MEMBERSHIPS_LIVE || video.kind === 'short';
 const desc = video.kind === 'quiz'
   ? `${video.fullTitle}. A ${ksLabel(video.keyStages)} Computing quiz video from Key Stage Learning.`
-  : `${video.fullTitle}. A free ${ksLabel(video.keyStages)} ${subject.name} lesson from Key Stage Learning.`;
+  : `${video.fullTitle}. A ${!MEMBERSHIPS_LIVE || free ? 'free ' : ''}${ksLabel(video.keyStages)} ${subject.name} lesson from Key Stage Learning.`;
 ---
 <Base title={video.title} description={desc} active={ksMain}>
   <div class:list={['page-hero', ksMain]} style="padding:32px 0 28px">
@@ -31,6 +35,7 @@ const desc = video.kind === 'quiz'
         {video.part && <span class="badge" style="background:rgba(255,255,255,.22)">Part {video.part}</span>}
         {video.kind === 'quiz' && <span class="badge quiz">Bonus quiz · 20 questions</span>}
         {video.kind === 'short' && <span class="badge short">Short</span>}
+        {MEMBERSHIPS_LIVE && (free ? <span class="badge free">Free</span> : <span class="badge members">Members</span>)}
       </div>
     </div>
   </div>
@@ -43,7 +48,7 @@ const desc = video.kind === 'quiz'
           {quiz && <a class="btn btn-yellow" href={`/watch/${quiz.slug}/`}>Take the quiz</a>}
           {lesson && <a class="btn btn-navy" href={`/watch/${lesson.slug}/`}>Watch the lesson first</a>}
           {next && <a class="btn btn-navy" href={`/watch/${next.slug}/`}>Watch next: {next.title}</a>}
-          <a class="btn" style="background:#fff;border:2px solid #e3dcf3" href={ytUrl} rel="noopener">Open on YouTube</a>
+          {showYouTube && <a class="btn" style="background:#fff;border:2px solid #e3dcf3" href={ytUrl} rel="noopener">Open on YouTube</a>}
         </div>
       </div>
 

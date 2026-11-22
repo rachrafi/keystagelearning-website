@@ -1,30 +1,85 @@
 ---
-// Shows the thumbnail and a big play button. The YouTube player only loads when it is pressed,
-// from YouTube's privacy-enhanced (no-cookie) address.
-import { type Video, thumb } from '../data/catalogue';
+// Shows the thumbnail and a big play button. Pressing play asks the site for a player:
+// a free video or a member gets Cloudflare Stream (or YouTube while memberships are off);
+// anyone else is told how to watch (sign in / join).
+import { type Video, thumb, isFree } from '../data/catalogue';
+import { MEMBERSHIPS_LIVE } from '../data/links';
 interface Props { video: Video }
 const { video } = Astro.props;
-const src = `https://www.youtube-nocookie.com/embed/${video.youtubeId}?autoplay=1&rel=0&modestbranding=1&cc_load_policy=1&hl=en-GB`;
+const free = isFree(video);
+const note = !MEMBERSHIPS_LIVE
+  ? 'The video plays from YouTube when you press play. Captions are switched on.'
+  : free ? 'Free to watch. Captions are switched on.' : 'For members. Captions are switched on.';
 ---
-<div class:list={['player', { short: video.kind === 'short' }]} data-src={src} data-title={video.fullTitle}>
+<div class:list={['player', { short: video.kind === 'short' }]} data-slug={video.slug} data-title={video.fullTitle}>
   <button type="button" aria-label={`Play video: ${video.title}`}>
     <img src={thumb(video.youtubeId)} alt="" width="480" height="360" referrerpolicy="no-referrer" onerror="this.style.visibility='hidden'" />
     <span class="big-play" aria-hidden="true"><svg width="40" height="40" viewBox="0 0 24 24"><path fill="#fff" d="M7 4v16l13-8z"/></svg></span>
   </button>
 </div>
-<p class="player-note" data-pagefind-ignore>The video plays from YouTube when you press play. Captions are switched on.</p>
+<p class="player-note" data-pagefind-ignore>{note}</p>
 
 <script>
+  type Answer = { mode: 'youtube' | 'stream' | 'signin' | 'join' | 'busy' | 'error' | 'missing'; src?: string; beat?: number };
+
+  const message = (p: HTMLElement, title: string, text: string, buttons: [string, string][]) => {
+    const box = document.createElement('div');
+    box.className = 'player-gate';
+    box.setAttribute('role', 'status');
+    box.innerHTML = `<h2></h2><p></p><div class="row"></div>`;
+    box.querySelector('h2')!.textContent = title;
+    box.querySelector('p')!.textContent = text;
+    for (const [label, href] of buttons) {
+      const a = document.createElement('a');
+      a.className = 'btn btn-yellow';
+      a.textContent = label;
+      a.href = href;
+      box.querySelector('.row')!.append(a);
+    }
+    p.replaceChildren(box);
+    box.focus?.();
+  };
+
+  const startBeats = (seconds: number) => {
+    const send = (what: string) => navigator.sendBeacon('/api/playing/', what);
+    const timer = setInterval(() => send('beat'), seconds * 1000);
+    addEventListener('pagehide', () => { clearInterval(timer); send('stop'); }, { once: true });
+  };
+
   document.querySelectorAll<HTMLElement>('.player').forEach((p) => {
-    p.querySelector('button')?.addEventListener('click', () => {
-      const f = document.createElement('iframe');
-      f.src = p.dataset.src!;
-      f.title = p.dataset.title ?? 'YouTube video';
-      f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen';
-      f.referrerPolicy = 'strict-origin-when-cross-origin';
-      f.allowFullscreen = true;
-      p.replaceChildren(f);
-      f.focus();
+    const button = p.querySelector('button')!;
+    button.addEventListener('click', async () => {
+      button.disabled = true;
+      const preview = new URLSearchParams(location.search).get('preview');
+      let answer: Answer = { mode: 'error' };
+      try {
+        const res = await fetch(`/api/play/${p.dataset.slug}/${preview ? `?preview=${encodeURIComponent(preview)}` : ''}`, { method: 'POST', credentials: 'same-origin' });
+        answer = await res.json();
+      } catch { /* shown below */ }
+
+      if ((answer.mode === 'youtube' || answer.mode === 'stream') && answer.src) {
+        const f = document.createElement('iframe');
+        f.src = answer.src;
+        f.title = p.dataset.title ?? 'Video';
+        f.allow = 'accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture; fullscreen';
+        f.referrerPolicy = 'strict-origin-when-cross-origin';
+        f.allowFullscreen = true;
+        p.replaceChildren(f);
+        f.focus();
+        if (answer.beat) startBeats(answer.beat);
+        return;
+      }
+      if (answer.mode === 'signin') {
+        message(p, 'This lesson is for members', 'Sign in if you already have a membership, or become a member to watch every lesson and quiz.',
+          [['Sign in', '/login/'], ['Become a member', '/join/']]);
+      } else if (answer.mode === 'join') {
+        message(p, 'This lesson is for members', 'Become a member to watch every lesson and quiz, from £4.99 a month.', [['Become a member', '/join/']]);
+      } else if (answer.mode === 'busy') {
+        message(p, 'Already playing on 2 devices', 'Your membership can play on 2 devices at the same time. Stop a video on one of them, then try again.',
+          [['Try again', location.href]]);
+      } else {
+        message(p, "Sorry, the video didn't start", 'Please try again in a moment.', [['Try again', location.href]]);
+      }
     });
   });
 </script>

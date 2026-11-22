@@ -6,6 +6,8 @@
 //   npm run stream -- --only 40        upload one video (the folder starting "40 - ")
 //   npm run stream                     upload everything that isn't on Stream yet
 //   npm run stream -- --status         check processing and finish any missing captions
+//   npm run stream -- --signing-key    make the key the website uses to sign video passes
+//                                      (copied to the clipboard, for the STREAM_SIGNING_KEY secret)
 //
 // Safe to stop (Ctrl+C) and run again: finished videos are skipped and a
 // half-finished one is started again.
@@ -252,8 +254,23 @@ async function status() {
   console.log(`\n${ready} ready, ${waiting} still processing, ${failed} with a problem.`);
 }
 
+async function signingKey() {
+  CF = await credentials();
+  const k = await api('POST', '/keys');
+  const secret = JSON.stringify({ id: k.id, jwk: k.jwk });
+  const file = path.join(ROOT, '.stream-signing-key');
+  fs.writeFileSync(file, secret, { mode: 0o600 });
+  const { execFileSync } = await import('node:child_process');
+  execFileSync('pbcopy', { input: secret });
+  console.log('\n✓ Signing key made and copied to your clipboard (it is not shown here).');
+  console.log('  A copy is also saved in .stream-signing-key in this folder (never uploaded to GitHub).\n');
+  console.log('Now in Cloudflare: keystagelearning → Settings → Runtime variables and secrets → + Add variable');
+  console.log('  Type: Secret   Name: STREAM_SIGNING_KEY   Value: paste (Cmd+V)   → Deploy\n');
+}
+
 try {
-  if (flag('--dry-run')) dryRun();
+  if (flag('--signing-key')) await signingKey();
+  else if (flag('--dry-run')) dryRun();
   else if (flag('--status')) await status();
   else await upload(value('--only'));
 } catch (e) {
