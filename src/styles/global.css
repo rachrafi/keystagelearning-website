@@ -244,3 +244,28 @@ details form { margin-top: 16px; }
 /* when the player shows a message instead of a video, let it grow to fit (small phones) */
 .player:has(.player-gate) { aspect-ratio: auto; min-height: 260px; }
 .player:has(.player-gate) .player-gate { position: relative; inset: auto; min-height: 260px; padding: 32px 20px; box-sizing: border-box; }
+
+/* National Curriculum box on video pages */
+.curriculum { margin-top: 28px; background: var(--paper); border-radius: var(--radius); padding: 24px 26px; border: 2px solid #e3dcf3; }
+.curriculum h2 { margin: 0 0 8px; font-size: 24px; }
+.curriculum h2 span { font-weight: 600; color: var(--muted); font-size: 17px; }
+.curriculum h3 { font-size: 17px; margin: 18px 0 8px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.curriculum .nc-summary { margin: 0; font-size: 17px; }
+.curriculum ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.curriculum li a { color: var(--ink); text-decoration: none; display: inline-flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.curriculum li a:hover strong { text-decoration: underline; }
+.curriculum q { display: block; margin-top: 4px; font-size: 15px; color: var(--muted); quotes: "“" "”"; }
+.curriculum .nc-source { margin: 18px 0 0; font-size: 13px; color: var(--muted); }
+
+/* Curriculum map page */
+.nc-stage { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 32px; }
+.nc-stage small { font-size: 18px; font-weight: 600; color: var(--muted); }
+.nc-map { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.nc-point { background: var(--paper); border-radius: var(--radius); padding: 22px 24px; border: 2px solid #e3dcf3; scroll-margin-top: 90px; }
+.nc-point:target { border-color: var(--yellow); box-shadow: 0 0 0 4px rgba(255,209,102,.45); }
+.nc-point h3 { margin: 0 0 6px; font-size: 21px; }
+.nc-point q { display: block; font-size: 15px; color: var(--muted); }
+.nc-point .nc-count { margin: 12px 0 6px; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: .04em; color: var(--purple); }
+.nc-point ul { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.nc-point li { font-size: 16px; }
+.nc-point .nc-topic { display: block; font-size: 14px; color: var(--muted); }

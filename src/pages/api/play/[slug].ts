@@ -20,7 +20,10 @@ export const POST: APIRoute = async ({ params, url, cookies, locals }) => {
 
   const stream = streamFor(video.slug);
   const live = MEMBERSHIPS_LIVE || url.searchParams.get('preview') === 'members';
-  if (!live || !stream || video.kind === 'short') return json({ mode: 'youtube', src: youtube(video) });
+  if (!stream || video.kind === 'short') return json({ mode: 'youtube', src: youtube(video) });
+  // Before launch everything plays as before; a video that's only on our site (not YouTube) plays from Stream.
+  if (!live && video.youtubeId) return json({ mode: 'youtube', src: youtube(video) });
+  if (!live) return json({ mode: 'stream', src: await streamPlayerUrl(stream.uid, stream.poster), free: true });
 
   try {
     if (isFree(video)) return json({ mode: 'stream', src: await streamPlayerUrl(stream.uid, stream.poster), free: true });

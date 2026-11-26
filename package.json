@@ -8,7 +8,8 @@
     "build": "astro build && pagefind --site dist/client",
     "preview": "astro preview",
     "deploy": "wrangler deploy",
-    "stream": "node scripts/stream-upload.mjs"
+    "stream": "node scripts/stream-upload.mjs",
+    "curriculum": "node scripts/curriculum.mjs"
   },
   "dependencies": {
     "@astrojs/cloudflare": "14.4.6",

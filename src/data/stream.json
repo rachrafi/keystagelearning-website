@@ -443,90 +443,90 @@
     },
     "50 - Cyber Security (Part 1) - Selma's Safety Shield (KS2)": {
       "uid": "6643d2fcba3c41f4dbeb8d59e3cb1e6b",
-      "slug": null,
+      "slug": "selmas-safety-shield",
       "title": "Cyber Security (Part 1) - Selma's Safety Shield",
-      "poster": null,
+      "poster": "/posters/selmas-safety-shield.jpg",
       "captions": true,
       "duration": 836,
       "ready": true
     },
     "51 - Cyber Security (Part 1) - Bonus Quiz (KS2)": {
       "uid": "cf1e78c40745cea7d289f9e4ef9d99b1",
-      "slug": null,
+      "slug": "cyber-security-part-1-quiz",
       "title": "Cyber Security (Part 1) - Bonus Quiz",
-      "poster": null,
+      "poster": "/posters/cyber-security-part-1-quiz.jpg",
       "captions": true,
       "duration": 614,
       "ready": true
     },
     "52 - Cyber Security (Part 2) - Aaliyah Defends the Penguin Times (KS3)": {
       "uid": "63ae0cac5c382915d42812cbc0083c9b",
-      "slug": null,
+      "slug": "aaliyah-defends-the-penguin-times",
       "title": "Cyber Security (Part 2) - Aaliyah Defends the Penguin Times",
-      "poster": null,
+      "poster": "/posters/aaliyah-defends-the-penguin-times.jpg",
       "captions": true,
       "duration": 1000,
       "ready": true
     },
     "53 - Cyber Security (Part 2) - Bonus Quiz (KS3)": {
       "uid": "fffe63938773c91c0a16d0bacf5fde03",
-      "slug": null,
+      "slug": "cyber-security-part-2-quiz",
       "title": "Cyber Security (Part 2) - Bonus Quiz",
-      "poster": null,
+      "poster": "/posters/cyber-security-part-2-quiz.jpg",
       "captions": true,
       "duration": 648,
       "ready": true
     },
     "54 - Healthy Tech (Part 1) - Selma's Screen-Time Balance (KS2)": {
       "uid": "29e8a2b2f72badaf73dbdef1093e7a73",
-      "slug": null,
+      "slug": "selmas-screen-time-balance",
       "title": "Healthy Tech (Part 1) - Selma's Screen-Time Balance",
-      "poster": null,
+      "poster": "/posters/selmas-screen-time-balance.jpg",
       "captions": true,
       "duration": 940,
       "ready": true
     },
     "55 - Healthy Tech (Part 2) - Aaliyah Takes Back Control (KS3)": {
       "uid": "dcab78b6cd70d60f7cb57f73057a0d4a",
-      "slug": null,
+      "slug": "aaliyah-takes-back-control",
       "title": "Healthy Tech (Part 2) - Aaliyah Takes Back Control",
-      "poster": null,
+      "poster": "/posters/aaliyah-takes-back-control.jpg",
       "captions": true,
       "duration": 928,
       "ready": true
     },
     "56 - Rules, Laws and Ethics (Part 1) - Selma's Fair Tech Mission (KS2)": {
       "uid": "bcaf0b46116428aa4bfcd6bb8a1d1eeb",
-      "slug": null,
+      "slug": "selmas-fair-tech-mission",
       "title": "Rules, Laws and Ethics (Part 1) - Selma's Fair Tech Mission",
-      "poster": null,
+      "poster": "/posters/selmas-fair-tech-mission.jpg",
       "captions": true,
       "duration": 872,
       "ready": true
     },
     "57 - Rules, Laws and Ethics (Part 2) - Aaliyah and the Data Detectives (KS3)": {
       "uid": "ac4aeb69b15b8f5c233cd1600199db1c",
-      "slug": null,
+      "slug": "aaliyah-and-the-data-detectives",
       "title": "Rules, Laws and Ethics (Part 2) - Aaliyah and the Data Detectives",
-      "poster": null,
+      "poster": "/posters/aaliyah-and-the-data-detectives.jpg",
       "captions": true,
       "duration": 974,
       "ready": true
     },
     "58 - Programming Languages and Translators (Part 1) - Selma's Robot Translator (KS2)": {
       "uid": "26817bc64e9c40ec93f5205fca718988",
-      "slug": null,
+      "slug": "selmas-robot-translator",
       "title": "Programming Languages and Translators (Part 1) - Selma's Robot Translator",
-      "poster": null,
+      "poster": "/posters/selmas-robot-translator.jpg",
       "captions": true,
       "duration": 976,
       "ready": true
     },
     "59 - Programming Languages and Translators (Part 2) - Aaliyah's Game Goes Pocket-Sized (KS3)": {
       "uid": "473b087c9fc44144dec854c29342b4cd",
-      "slug": null,
+      "slug": "aaliyahs-game-goes-pocket-sized",
       "title": "Programming Languages and Translators (Part 2) - Aaliyah's Game Goes Pocket-Sized",
-      "poster": null,
+      "poster": "/posters/aaliyahs-game-goes-pocket-sized.jpg",
       "captions": true,
       "duration": 1001,
       "ready": true
@@ -547,6 +547,96 @@
       "poster": null,
       "captions": true,
       "duration": 1156,
+      "ready": true
+    },
+    "62 - Email and Working Together Online (Part 1) - Selma and Zoe's Penguin Project (KS2)": {
+      "uid": "b91ba3cf96f720c202c376e190c70d77",
+      "slug": "selma-and-zoes-penguin-project",
+      "title": "Email and Working Together Online (Part 1) - Selma and Zoe's Penguin Project",
+      "poster": "/posters/selma-and-zoes-penguin-project.jpg",
+      "captions": true,
+      "duration": 1079,
+      "ready": true
+    },
+    "63 - Email and Working Together Online (Part 2) - Aaliyah's Penguin Times Team (KS3)": {
+      "uid": "a189bb06f8664b76c98046a0ca307fee",
+      "slug": "aaliyahs-penguin-times-team",
+      "title": "Email and Working Together Online (Part 2) - Aaliyah's Penguin Times Team",
+      "poster": "/posters/aaliyahs-penguin-times-team.jpg",
+      "captions": true,
+      "duration": 1000,
+      "ready": true
+    },
+    "64 - Programming (Part 3) - Aaliyah Builds a Quiz Machine (KS3)": {
+      "uid": "cbe2742d98e35b5e9ba46270dbac8c1c",
+      "slug": "aaliyah-builds-a-quiz-machine",
+      "title": "Programming (Part 3) - Aaliyah Builds a Quiz Machine",
+      "poster": "/posters/aaliyah-builds-a-quiz-machine.jpg",
+      "captions": true,
+      "duration": 990,
+      "ready": true
+    },
+    "65 - Programming (Part 3) - Bonus Quiz (KS3)": {
+      "uid": "cdf7014a96473354f7af823a2be864d7",
+      "slug": "programming-part-3-quiz",
+      "title": "Programming (Part 3) - Bonus Quiz",
+      "poster": "/posters/programming-part-3-quiz.jpg",
+      "captions": true,
+      "duration": 662,
+      "ready": true
+    },
+    "66 - Programming (Part 1) - Bonus Quiz (KS2)": {
+      "uid": "6ef2c27114c7d343d6752cea4560c1fb",
+      "slug": "programming-part-1-quiz",
+      "title": "Programming (Part 1) - Bonus Quiz",
+      "poster": "/posters/programming-part-1-quiz.jpg",
+      "captions": true,
+      "duration": 606,
+      "ready": true
+    },
+    "67 - Programming (Part 2) - Bonus Quiz (KS3)": {
+      "uid": "f86d15400b442f7e81363fc1a7caca6a",
+      "slug": "programming-part-2-quiz",
+      "title": "Programming (Part 2) - Bonus Quiz",
+      "poster": "/posters/programming-part-2-quiz.jpg",
+      "captions": true,
+      "duration": 642,
+      "ready": true
+    },
+    "68 - Searching and Sorting (Part 1) - Bonus Quiz (KS2)": {
+      "uid": "a76a027352b0c2806c0b01c8198bc521",
+      "slug": "searching-and-sorting-part-1-quiz",
+      "title": "Searching and Sorting (Part 1) - Bonus Quiz",
+      "poster": "/posters/searching-and-sorting-part-1-quiz.jpg",
+      "captions": true,
+      "duration": 624,
+      "ready": true
+    },
+    "69 - Searching and Sorting (Part 2) - Bonus Quiz (KS3)": {
+      "uid": "4f49a119c76cea6c32c051a9e18f8916",
+      "slug": "searching-and-sorting-part-2-quiz",
+      "title": "Searching and Sorting (Part 2) - Bonus Quiz",
+      "poster": "/posters/searching-and-sorting-part-2-quiz.jpg",
+      "captions": true,
+      "duration": 660,
+      "ready": true
+    },
+    "70 - Images and Sound (Part 1) - Bonus Quiz (KS2 & KS3)": {
+      "uid": "7e6e47e248ca215acd001aa0fb644152",
+      "slug": "images-and-sound-part-1-quiz",
+      "title": "Images and Sound (Part 1) - Bonus Quiz",
+      "poster": "/posters/images-and-sound-part-1-quiz.jpg",
+      "captions": true,
+      "duration": 599,
+      "ready": true
+    },
+    "71 - Images and Sound (Part 2) - Bonus Quiz (KS3)": {
+      "uid": "f538f78298a1089593596ec6f01f0329",
+      "slug": "images-and-sound-part-2-quiz",
+      "title": "Images and Sound (Part 2) - Bonus Quiz",
+      "poster": "/posters/images-and-sound-part-2-quiz.jpg",
+      "captions": true,
+      "duration": 657,
       "ready": true
     }
   }

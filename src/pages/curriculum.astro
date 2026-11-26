@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { statementsFor, lessonsCovering, SOURCE, SOURCE_URL } from '../data/curriculum';
+import { topicById, ksLabel, type KeyStage } from '../data/catalogue';
+
+const stages: { ks: KeyStage; title: string; years: string }[] = [
+  { ks: 'ks2', title: 'Key Stage 2', years: 'Years 3 to 6' },
+  { ks: 'ks3', title: 'Key Stage 3', years: 'Years 7 to 9' },
+];
+---
+<Base title="Curriculum map" description="Every point of the National Curriculum for Computing at KS2 and KS3, and the Key Stage Learning lessons that teach it." active="parents">
+  <div class="page-hero">
+    <div class="wrap">
+      <Crumbs items={[{ label: 'Parents and teachers', href: '/parents-and-teachers/' }, { label: 'Curriculum map' }]} />
+      <h1>Curriculum map</h1>
+      <p>Every point of the National Curriculum in England for Computing at KS2 and KS3, and the lessons that teach it. Many lessons also have a bonus quiz to check understanding.</p>
+    </div>
+  </div>
+
+  {stages.map(({ ks, title, years }) => (
+    <section class="tight">
+      <div class="wrap">
+        <h2 class="nc-stage"><span class:list={['badge', ks]}>{ks.toUpperCase()}</span> {title} <small>{years}</small></h2>
+        <div class="nc-map">
+          {statementsFor(ks).map((s) => {
+            const lessons = lessonsCovering(s.id);
+            return (
+              <article id={s.id} class="nc-point">
+                <h3>{s.short}</h3>
+                <q>Pupils should be taught to {s.text}</q>
+                <p class="nc-count">{lessons.length} {lessons.length === 1 ? 'lesson' : 'lessons'}</p>
+                <ul>
+                  {lessons.map((v) => (
+                    <li><a href={`/watch/${v.slug}/`}>{v.title}</a> <span class="nc-topic">{topicById(v.topic).title}{v.part ? `, Part ${v.part}` : ''} · {ksLabel(v.keyStages)}</span></li>
+                  ))}
+                </ul>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="tight">
+    <div class="wrap prose">
+      <p class="hint">Source: <a href={SOURCE_URL} rel="noopener">{SOURCE}</a></p>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,1159 @@
+{
+  "the-great-packet-puzzle": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This video explains how data travels across the internet in packets, how routers find the way, and how missing pieces are spotted and rebuilt. It supports the KS2 goal of understanding computer networks and the internet, and leads into how systems communicate at KS3.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      }
+    ]
+  },
+  "the-server-cafe": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children learn what clients and servers are, the different jobs servers do, and what bandwidth means (and why videos buffer). This is part of the KS2 requirement to understand how networks and the internet provide services such as the web.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      }
+    ]
+  },
+  "http-vs-https": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "This video explains protocols, the difference between HTTP and HTTPS, and what the padlock in a browser really means. It covers how the internet carries information (KS2) and how to stay secure online (KS2 and KS3).",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      },
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "ip-addresses": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "Children find out what an IP address is, why each part goes from 0 to 255 (8 bits), how DNS works and why we needed IPv6. It builds understanding of networks (KS2) and how computer systems communicate, with a first look at binary (KS3).",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand simple Boolean logic [for example, AND, OR and NOT] and some of its uses in circuits and programming; understand how numbers can be represented in binary, and be able to carry out simple operations on binary numbers [for example, binary addition, and conversion between binary and decimal]"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      }
+    ]
+  },
+  "what-is-the-internet": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This video explains what the internet actually is: networks, Wi-Fi, routers, cables, Internet Service Providers, DNS, and the difference between the internet and the World Wide Web. It covers the KS2 requirement to understand computer networks, including the internet and the web.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      }
+    ]
+  },
+  "the-password-fortress": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "Children learn how to make strong passwords (the three random words trick), why every account needs its own password, and how two-step verification helps. It directly supports using technology safely and securely at KS2 and KS3.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "sneaky-sid-goes-phishing": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "This video teaches children to spot phishing tricks (freebies, countdowns, copied logos and fake links), never to share passwords or codes, and to stop, check and tell a trusted adult. It covers recognising unsafe contact and reporting concerns at KS2 and KS3.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "inside-a-computer": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "A tour of the inside of a computer: input, process and output, the CPU, RAM, storage, the GPU and the operating system. It covers the KS3 requirement to understand the hardware and software that make up computer systems.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand how instructions are stored and executed within a computer system; understand how data of various types (including text, sounds and pictures) can be represented and manipulated digitally, in the form of binary digits"
+      }
+    ]
+  },
+  "the-robot-sandwich": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "Children learn what an algorithm is and why instructions must be precise and in order, then meet sequence, selection, loops, decomposition and debugging, with a first look at searching and sorting. It supports the KS2 programming and logical reasoning goals and leads into KS3 algorithms.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "design, write and debug programs that accomplish specific goals, including controlling or simulating physical systems; solve problems by decomposing them into smaller parts"
+      },
+      {
+        "ks": "KS2",
+        "text": "use sequence, selection, and repetition in programs; work with variables and various forms of input and output"
+      },
+      {
+        "ks": "KS2",
+        "text": "use logical reasoning to explain how some simple algorithms work and to detect and correct errors in algorithms and programs"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand several key algorithms that reflect computational thinking [for example, ones for sorting and searching]; use logical reasoning to compare the utility of alternative algorithms for the same problem"
+      }
+    ]
+  },
+  "pengbot-learns-to-code": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "Children turn an algorithm into real Python code: printing, variables, input, if/else, loops and fixing errors, building up to a number-guessing game. It covers writing and debugging programs (KS2) and using a text-based language (KS3).",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "design, write and debug programs that accomplish specific goals, including controlling or simulating physical systems; solve problems by decomposing them into smaller parts"
+      },
+      {
+        "ks": "KS2",
+        "text": "use sequence, selection, and repetition in programs; work with variables and various forms of input and output"
+      },
+      {
+        "ks": "KS3",
+        "text": "use 2 or more programming languages, at least one of which is textual, to solve a variety of computational problems; make appropriate use of data structures [for example, lists, tables or arrays]; design and develop modular programs that use procedures or functions"
+      }
+    ]
+  },
+  "digital-footprints": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "This video explains digital footprints, the clues a photo can give away, privacy settings and asking friends before posting. It supports using technology responsibly (KS2) and protecting online identity and privacy (KS3).",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "pengbots-light-switches": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "Children learn how computers count with just 0s and 1s: bits and bytes, binary place values, converting between binary and normal numbers, and how letters and pictures are stored. It covers the KS3 requirements on binary numbers and how data is represented.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand simple Boolean logic [for example, AND, OR and NOT] and some of its uses in circuits and programming; understand how numbers can be represented in binary, and be able to carry out simple operations on binary numbers [for example, binary addition, and conversion between binary and decimal]"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand how instructions are stored and executed within a computer system; understand how data of various types (including text, sounds and pictures) can be represented and manipulated digitally, in the form of binary digits"
+      }
+    ]
+  },
+  "the-super-sorted-library": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video explains what a database is (tables, records, fields and keys) and how sorting, filtering and queries find information, and why personal data must be kept private. It supports collecting and analysing data with software at KS2 and KS3.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      },
+      {
+        "ks": "KS3",
+        "text": "undertake creative projects that involve selecting, using, and combining multiple applications, preferably across a range of devices, to achieve challenging goals, including collecting and analysing data and meeting the needs of known users"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "sneaky-sids-free-coins-trick": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "Children learn about viruses, worms, Trojan horses, ransomware and spyware, the warning signs of malware, and how antivirus, updates and backups keep devices safe. It covers using technology safely and securely at KS2 and KS3.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "search-and-fake-news": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This video shows how search engines crawl and rank pages, how to choose good keywords and spot adverts, and how to check whether a story is true. It covers the KS2 requirement to use search technologies effectively and judge digital content, and the KS3 focus on trustworthiness.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use search technologies effectively, appreciate how results are selected and ranked, and be discerning in evaluating digital content"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      }
+    ]
+  },
+  "being-kind-online": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "Children learn what cyberbullying is, why not to reply, and how to save, block, report and tell a trusted adult, as well as how to be kind online. It directly supports using technology respectfully and knowing how to report concerns at KS2 and KS3.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "how-does-pengbot-learn": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "AI isn't named in the National Curriculum, but it is now such an important part of everyday technology that it's in every child's interest to learn the basics. This video shows how a computer 'learns' from training data, why AI can get things wrong, and how to use it sensibly: checking facts and keeping personal information private.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use search technologies effectively, appreciate how results are selected and ranked, and be discerning in evaluating digital content"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "pengbots-secret-door": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "Children learn true and false (Boolean values), AND, OR and NOT, truth tables and logic gates, and how programmers and search engines use logic. It covers the KS3 requirement to understand simple Boolean logic and its uses in circuits and programming.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand simple Boolean logic [for example, AND, OR and NOT] and some of its uses in circuits and programming; understand how numbers can be represented in binary, and be able to carry out simple operations on binary numbers [for example, binary addition, and conversion between binary and decimal]"
+      }
+    ]
+  },
+  "sneaky-sid-and-the-surprise-party": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "This video explains encryption (plaintext, ciphertext and keys) using a Caesar cipher, why simple codes are easy to crack, and how computers keep websites and passwords safe. It uses logical reasoning about a simple algorithm (KS2) and supports using technology securely (KS3).",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use logical reasoning to explain how some simple algorithms work and to detect and correct errors in algorithms and programs"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "pengbots-sports-day": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "Children learn the four big ideas of computational thinking: decomposition, pattern recognition, abstraction and algorithms. It supports solving problems by breaking them into smaller parts (KS2) and using abstraction and computational thinking (KS3).",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "design, write and debug programs that accomplish specific goals, including controlling or simulating physical systems; solve problems by decomposing them into smaller parts"
+      },
+      {
+        "ks": "KS3",
+        "text": "design, use and evaluate computational abstractions that model the state and behaviour of real-world problems and physical systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand several key algorithms that reflect computational thinking [for example, ones for sorting and searching]; use logical reasoning to compare the utility of alternative algorithms for the same problem"
+      }
+    ]
+  },
+  "whos-really-online": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "This video helps children understand that anyone can pretend to be someone else online, how to spot red flags, and what to do if something feels wrong: stop, tell a trusted adult, block and report. It directly covers recognising inappropriate contact and how to report concerns at KS2 and KS3.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "the-cloud": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "Children find out what 'the cloud' really is (computers in data centres reached over the internet), plus uploading, syncing and backups, and how to keep cloud accounts safe. It supports understanding internet services (KS2) and how systems communicate securely (KS3).",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "pengbots-smart-home": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "Smart devices aren't named in the National Curriculum, but children are surrounded by them, so it's worth understanding how they work. This video covers sensors, input-process-output, the Internet of Things and how to keep smart devices safe, which links to the curriculum's work on networks, computer systems and staying secure.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "pengbots-pixel-paint": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "Children discover how computers store pictures and sounds as numbers: pixels, resolution, RGB colour, colour depth, sound samples and compression. It introduces the KS3 requirement to understand how pictures and sounds are represented digitally.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand how instructions are stored and executed within a computer system; understand how data of various types (including text, sounds and pictures) can be represented and manipulated digitally, in the form of binary digits"
+      }
+    ]
+  },
+  "pengbots-file-size-challenge": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video works out real file sizes step by step: 8-bit colour, colour depth, bits to bytes to kilobytes, sample rate and bit depth, and how compression works. It covers the KS3 requirements on binary and how sounds and pictures are represented and stored.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand simple Boolean logic [for example, AND, OR and NOT] and some of its uses in circuits and programming; understand how numbers can be represented in binary, and be able to carry out simple operations on binary numbers [for example, binary addition, and conversion between binary and decimal]"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand how instructions are stored and executed within a computer system; understand how data of various types (including text, sounds and pictures) can be represented and manipulated digitally, in the form of binary digits"
+      }
+    ]
+  },
+  "pengbots-maze-game": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children build a maze game in Scratch, learning decomposition, events, sequence, loops, if-then choices, variables, a timer and debugging. It covers the KS2 programming requirements: writing and debugging programs using sequence, selection, repetition and variables.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "design, write and debug programs that accomplish specific goals, including controlling or simulating physical systems; solve problems by decomposing them into smaller parts"
+      },
+      {
+        "ks": "KS2",
+        "text": "use sequence, selection, and repetition in programs; work with variables and various forms of input and output"
+      },
+      {
+        "ks": "KS2",
+        "text": "use logical reasoning to explain how some simple algorithms work and to detect and correct errors in algorithms and programs"
+      }
+    ]
+  },
+  "pengbots-python-quest": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video moves from Scratch to real Python: for and while loops, if/elif/else, lists, strings, functions with parameters and return, random numbers and trace tables. It covers the KS3 requirement to use a text-based language, data structures such as lists, and functions.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "use 2 or more programming languages, at least one of which is textual, to solve a variety of computational problems; make appropriate use of data structures [for example, lists, tables or arrays]; design and develop modular programs that use procedures or functions"
+      }
+    ]
+  },
+  "pengbots-fish-hunt": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children learn how linear search works, how computers sort by comparing and swapping, and why sorted lists are faster to search. It supports logical reasoning about how algorithms work (KS2) and introduces the KS3 searching and sorting algorithms.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use logical reasoning to explain how some simple algorithms work and to detect and correct errors in algorithms and programs"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand several key algorithms that reflect computational thinking [for example, ones for sorting and searching]; use logical reasoning to compare the utility of alternative algorithms for the same problem"
+      }
+    ]
+  },
+  "pengbots-speedy-sort": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video explains binary search, bubble sort, insertion sort and merge sort, and compares how fast they are on a big list. It covers the KS3 requirement to understand key searching and sorting algorithms and compare alternative algorithms for the same problem.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand several key algorithms that reflect computational thinking [for example, ones for sorting and searching]; use logical reasoning to compare the utility of alternative algorithms for the same problem"
+      }
+    ]
+  },
+  "pengbots-gadget-lab": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children learn the difference between hardware and software, how every computer takes input, processes it and gives output, and why memory forgets but storage keeps work safe. It builds the foundations for understanding computer systems from KS2 into KS3.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      }
+    ]
+  },
+  "hardware-and-software-part-1-quiz": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Hardware and Software (Part 1) - Pengbot's Gadget Lab (KS2)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      }
+    ]
+  },
+  "pengbots-processor-power": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video goes inside the processor: the control unit, ALU and registers, the fetch-decode-execute cycle, clock speed, cores and cache, RAM and ROM, storage types and the operating system. It covers the KS3 requirements on computer hardware and software and how instructions are executed.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand how instructions are stored and executed within a computer system; understand how data of various types (including text, sounds and pictures) can be represented and manipulated digitally, in the form of binary digits"
+      }
+    ]
+  },
+  "hardware-and-software-part-2-quiz": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Hardware and Software (Part 2) - Pengbot's Processor Power (KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand how instructions are stored and executed within a computer system; understand how data of various types (including text, sounds and pictures) can be represented and manipulated digitally, in the form of binary digits"
+      }
+    ]
+  },
+  "pengbots-penguin-survey": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children run a survey: asking good questions, tally charts, sensors, pictograms, bar charts and line graphs, then a database they can sort and search. It covers the KS2 requirement to collect, analyse, evaluate and present data and information.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      }
+    ]
+  },
+  "data-and-spreadsheets-part-1-quiz": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Data and Spreadsheets (Part 1) - Pengbot's Penguin Survey (KS2)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      }
+    ]
+  },
+  "pengbots-fish-fest-spreadsheet": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video teaches spreadsheets: cell references, formulas, functions such as SUM, AVERAGE and IF, sorting and filtering, charts, and 'what if?' modelling. It supports collecting and analysing data with software at KS2 and KS3.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      },
+      {
+        "ks": "KS3",
+        "text": "undertake creative projects that involve selecting, using, and combining multiple applications, preferably across a range of devices, to achieve challenging goals, including collecting and analysing data and meeting the needs of known users"
+      }
+    ]
+  },
+  "data-and-spreadsheets-part-2-quiz": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Data and Spreadsheets (Part 2) - Pengbot's Fish Fest Spreadsheet (KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      },
+      {
+        "ks": "KS3",
+        "text": "undertake creative projects that involve selecting, using, and combining multiple applications, preferably across a range of devices, to achieve challenging goals, including collecting and analysing data and meeting the needs of known users"
+      }
+    ]
+  },
+  "pengbots-penguin-website": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children learn what web pages, websites, browsers, servers and URLs are, how links make the World Wide Web, and how to plan a website, with a first look at HTML and checking whether a page can be trusted. It covers the KS2 requirements on the web, evaluating content and creating content.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      },
+      {
+        "ks": "KS2",
+        "text": "use search technologies effectively, appreciate how results are selected and ranked, and be discerning in evaluating digital content"
+      },
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      }
+    ]
+  },
+  "making-web-pages-part-1-quiz": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Making Web Pages (Part 1) - Pengbot's Penguin Website (KS2)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      },
+      {
+        "ks": "KS2",
+        "text": "use search technologies effectively, appreciate how results are selected and ranked, and be discerning in evaluating digital content"
+      },
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      }
+    ]
+  },
+  "aaliyah-codes-the-penguin-times": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video builds a real website with HTML and CSS: page structure, headings, lists, images with alt text, links, classes and the box model. It supports using a second, text-based language and creating digital artefacts for an audience at KS3.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "use 2 or more programming languages, at least one of which is textual, to solve a variety of computational problems; make appropriate use of data structures [for example, lists, tables or arrays]; design and develop modular programs that use procedures or functions"
+      },
+      {
+        "ks": "KS3",
+        "text": "undertake creative projects that involve selecting, using, and combining multiple applications, preferably across a range of devices, to achieve challenging goals, including collecting and analysing data and meeting the needs of known users"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      }
+    ]
+  },
+  "making-web-pages-part-2-quiz": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Making Web Pages (Part 2) - Aaliyah Codes the Penguin Times (KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "use 2 or more programming languages, at least one of which is textual, to solve a variety of computational problems; make appropriate use of data structures [for example, lists, tables or arrays]; design and develop modular programs that use procedures or functions"
+      },
+      {
+        "ks": "KS3",
+        "text": "undertake creative projects that involve selecting, using, and combining multiple applications, preferably across a range of devices, to achieve challenging goals, including collecting and analysing data and meeting the needs of known users"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      }
+    ]
+  },
+  "pengbot-connects-penguin-school": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children learn what a network is and what it lets us share, the difference between a LAN and a WAN, and the hardware that connects it all. It covers the KS2 requirement to understand computer networks and the opportunities they offer for communication and collaboration.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      }
+    ]
+  },
+  "networks-part-1-quiz": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Networks (Part 1) - Pengbot Connects Penguin School (KS2)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      }
+    ]
+  },
+  "pengbots-network-plan": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video compares client-server and peer-to-peer networks and network topologies, explains MAC and IP addresses, packet switching and protocols such as TCP, UDP and HTTPS. It covers the KS3 requirement to understand how computer systems communicate with one another.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand simple Boolean logic [for example, AND, OR and NOT] and some of its uses in circuits and programming; understand how numbers can be represented in binary, and be able to carry out simple operations on binary numbers [for example, binary addition, and conversion between binary and decimal]"
+      }
+    ]
+  },
+  "networks-part-2-quiz": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Networks (Part 2) - Pengbot's Network Plan (KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand simple Boolean logic [for example, AND, OR and NOT] and some of its uses in circuits and programming; understand how numbers can be represented in binary, and be able to carry out simple operations on binary numbers [for example, binary addition, and conversion between binary and decimal]"
+      }
+    ]
+  },
+  "aaliyahs-big-presentation": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children plan a presentation for a purpose and an audience, design clear slides, and edit photos and sound. It covers the KS2 requirement to select and combine software to create content, and links to creating digital artefacts for an audience at KS3.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      }
+    ]
+  },
+  "digital-media-part-1-quiz": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Digital Media (Part 1) - Aaliyah's Big Presentation (KS2)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      }
+    ]
+  },
+  "aaliyahs-penguin-film": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video follows a creative project from plan to finished film: success criteria, storyboards, bitmap and vector images, file formats and video editing. It covers the KS3 requirements on creative projects and creating digital artefacts for a given audience.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "undertake creative projects that involve selecting, using, and combining multiple applications, preferably across a range of devices, to achieve challenging goals, including collecting and analysing data and meeting the needs of known users"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      }
+    ]
+  },
+  "digital-media-part-2-quiz": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Digital Media (Part 2) - Aaliyah's Penguin Film (KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "undertake creative projects that involve selecting, using, and combining multiple applications, preferably across a range of devices, to achieve challenging goals, including collecting and analysing data and meeting the needs of known users"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      }
+    ]
+  },
+  "selmas-safety-shield": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children learn what cyber security is and how to protect a device layer by layer: screen locks, strong passwords, two-step verification, updates and logging out. It covers the KS2 requirement to use technology safely and responsibly.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      }
+    ]
+  },
+  "cyber-security-part-1-quiz": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Cyber Security (Part 1) - Selma's Safety Shield (KS2)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      }
+    ]
+  },
+  "aaliyah-defends-the-penguin-times": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video explains how attackers work (social engineering, brute force, denial of service, interception and malware) and the defences that stop them. It covers the KS3 requirement to use technology securely and protect online identity and privacy.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      }
+    ]
+  },
+  "cyber-security-part-2-quiz": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Cyber Security (Part 2) - Aaliyah Defends the Penguin Times (KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      }
+    ]
+  },
+  "selmas-screen-time-balance": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This video helps children keep their tech time healthy: balancing screen time with sleep, play and family, taking breaks, and stopping on time. It supports using technology responsibly (KS2), and also links to the online wellbeing content of Health Education (RSHE).",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      }
+    ]
+  },
+  "aaliyah-takes-back-control": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "Older children find out how apps are designed to keep us hooked (autoplay, streaks, notifications and dark patterns), how influencers and adverts work, and how to take back control. It supports using technology responsibly and judging trustworthiness at KS3, and links to the online wellbeing content of Health Education (RSHE).",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      }
+    ]
+  },
+  "selmas-fair-tech-mission": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "The National Curriculum doesn't name e-waste or accessibility, but they are important parts of being a responsible user of technology. This video covers what's inside our gadgets, reuse, repair and recycle, saving energy, and how tech can work for everyone, alongside using technology respectfully and responsibly (KS2).",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      }
+    ]
+  },
+  "aaliyah-and-the-data-detectives": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video explains personal data, the Data Protection Act and UK GDPR, our rights over our data, and three UK tech laws side by side, plus the bigger impacts of technology. It supports protecting online identity and privacy (KS3) and the curriculum's aim of responsible use of technology.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      }
+    ]
+  },
+  "selmas-robot-translator": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children find out what programming languages are, why computers need machine code and a translator, and how code can control a real robot, including simulating and debugging it. It covers the KS2 requirement to write and debug programs that control or simulate physical systems.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "design, write and debug programs that accomplish specific goals, including controlling or simulating physical systems; solve problems by decomposing them into smaller parts"
+      },
+      {
+        "ks": "KS2",
+        "text": "use logical reasoning to explain how some simple algorithms work and to detect and correct errors in algorithms and programs"
+      }
+    ]
+  },
+  "aaliyahs-game-goes-pocket-sized": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video compares high- and low-level languages, introduces assembly, assemblers, compilers and interpreters, and shows how a program is stored and run. It covers the KS3 requirements to use more than one programming language and understand how instructions are stored and executed.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "use 2 or more programming languages, at least one of which is textual, to solve a variety of computational problems; make appropriate use of data structures [for example, lists, tables or arrays]; design and develop modular programs that use procedures or functions"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand how instructions are stored and executed within a computer system; understand how data of various types (including text, sounds and pictures) can be represented and manipulated digitally, in the form of binary digits"
+      }
+    ]
+  },
+  "selma-and-zoes-penguin-project": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "Children learn how to send an email (addresses, To, Subject, CC, attachments and Reply), what spam and phishing are and what to do about them, and how to work together online with video calls and a shared document, politely and safely. It covers the KS2 aim of understanding the opportunities networks offer for communication and collaboration, using internet services, and using technology safely, respectfully and responsibly.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "understand computer networks including the internet; how they can provide multiple services, such as the world wide web; and the opportunities they offer for communication and collaboration"
+      },
+      {
+        "ks": "KS2",
+        "text": "select, use and combine a variety of software (including internet services) on a range of digital devices to design and create a range of programs, systems and content that accomplish given goals, including collecting, analysing, evaluating and presenting data and information"
+      },
+      {
+        "ks": "KS2",
+        "text": "use technology safely, respectfully and responsibly; recognise acceptable/unacceptable behaviour; identify a range of ways to report concerns about content and contact"
+      }
+    ]
+  },
+  "aaliyahs-penguin-times-team": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This video shows older pupils how to work together online on a real project: editing a shared document live, using comments, suggestions and version history, and choosing sharing permissions. It then covers emailing for an audience (formal tone, BCC and personal data, Reply all, big files as links, a quick SMTP and IMAP recap) and spotting spear phishing, before choosing the right tool for each job and keeping teamwork healthy and kind. It supports the KS3 aims of combining applications in creative projects, making digital artefacts for an audience, using technology safely, respectfully and securely, and understanding how computer systems communicate.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "undertake creative projects that involve selecting, using, and combining multiple applications, preferably across a range of devices, to achieve challenging goals, including collecting and analysing data and meeting the needs of known users"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand a range of ways to use technology safely, respectfully, responsibly and securely, including protecting their online identity and privacy; recognise inappropriate content, contact and conduct, and know how to report concerns"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand the hardware and software components that make up computer systems, and how they communicate with one another and with other systems"
+      }
+    ]
+  },
+  "aaliyah-builds-a-quiz-machine": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "Older pupils follow a real programming project from start to finish: the development cycle (plan, code, test, improve), success criteria, decomposition into functions, abstraction and pseudocode, then building a quiz game in Python with a 2D list, a function that returns a value, random.shuffle and input validation with a while loop. Finally they test it with a test plan using normal, boundary and invalid data, find a bug with a trace table, try it with real users and evaluate it against the success criteria. It supports the KS3 requirements to use a textual programming language with data structures and functions, to design and evaluate computational abstractions, and to undertake creative projects that meet the needs of known users.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "use 2 or more programming languages, at least one of which is textual, to solve a variety of computational problems; make appropriate use of data structures [for example, lists, tables or arrays]; design and develop modular programs that use procedures or functions"
+      },
+      {
+        "ks": "KS3",
+        "text": "design, use and evaluate computational abstractions that model the state and behaviour of real-world problems and physical systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand several key algorithms that reflect computational thinking [for example, ones for sorting and searching]; use logical reasoning to compare the utility of alternative algorithms for the same problem"
+      },
+      {
+        "ks": "KS3",
+        "text": "undertake creative projects that involve selecting, using, and combining multiple applications, preferably across a range of devices, to achieve challenging goals, including collecting and analysing data and meeting the needs of known users"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      }
+    ]
+  },
+  "programming-part-3-quiz": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Programming (Part 3) - Aaliyah Builds a Quiz Machine (KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "use 2 or more programming languages, at least one of which is textual, to solve a variety of computational problems; make appropriate use of data structures [for example, lists, tables or arrays]; design and develop modular programs that use procedures or functions"
+      },
+      {
+        "ks": "KS3",
+        "text": "design, use and evaluate computational abstractions that model the state and behaviour of real-world problems and physical systems"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand several key algorithms that reflect computational thinking [for example, ones for sorting and searching]; use logical reasoning to compare the utility of alternative algorithms for the same problem"
+      },
+      {
+        "ks": "KS3",
+        "text": "undertake creative projects that involve selecting, using, and combining multiple applications, preferably across a range of devices, to achieve challenging goals, including collecting and analysing data and meeting the needs of known users"
+      },
+      {
+        "ks": "KS3",
+        "text": "create, re-use, revise and re-purpose digital artefacts for a given audience, with attention to trustworthiness, design and usability"
+      }
+    ]
+  },
+  "programming-part-1-quiz": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Programming (Part 1) - Pengbot's Maze Game (KS2)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "design, write and debug programs that accomplish specific goals, including controlling or simulating physical systems; solve problems by decomposing them into smaller parts"
+      },
+      {
+        "ks": "KS2",
+        "text": "use sequence, selection, and repetition in programs; work with variables and various forms of input and output"
+      },
+      {
+        "ks": "KS2",
+        "text": "use logical reasoning to explain how some simple algorithms work and to detect and correct errors in algorithms and programs"
+      }
+    ]
+  },
+  "programming-part-2-quiz": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Programming (Part 2) - Pengbot's Python Quest (KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "use 2 or more programming languages, at least one of which is textual, to solve a variety of computational problems; make appropriate use of data structures [for example, lists, tables or arrays]; design and develop modular programs that use procedures or functions"
+      }
+    ]
+  },
+  "searching-and-sorting-part-1-quiz": {
+    "stages": [
+      "KS2"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Searching and Sorting (Part 1) - Pengbot's Fish Hunt (KS2)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS2",
+        "text": "use logical reasoning to explain how some simple algorithms work and to detect and correct errors in algorithms and programs"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand several key algorithms that reflect computational thinking [for example, ones for sorting and searching]; use logical reasoning to compare the utility of alternative algorithms for the same problem"
+      }
+    ]
+  },
+  "searching-and-sorting-part-2-quiz": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Searching and Sorting (Part 2) - Pengbot's Speedy Sort (KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand several key algorithms that reflect computational thinking [for example, ones for sorting and searching]; use logical reasoning to compare the utility of alternative algorithms for the same problem"
+      }
+    ]
+  },
+  "images-and-sound-part-1-quiz": {
+    "stages": [
+      "KS2",
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Images and Sound (Part 1) - Pengbot's Pixel Paint (KS2 & KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand how instructions are stored and executed within a computer system; understand how data of various types (including text, sounds and pictures) can be represented and manipulated digitally, in the form of binary digits"
+      }
+    ]
+  },
+  "images-and-sound-part-2-quiz": {
+    "stages": [
+      "KS3"
+    ],
+    "summary": "This 20-question quiz checks understanding of the lesson \"Images and Sound (Part 2) - Pengbot's File Size Challenge (KS3)\", so it covers the same curriculum points as that video.",
+    "points": [
+      {
+        "ks": "KS3",
+        "text": "understand simple Boolean logic [for example, AND, OR and NOT] and some of its uses in circuits and programming; understand how numbers can be represented in binary, and be able to carry out simple operations on binary numbers [for example, binary addition, and conversion between binary and decimal]"
+      },
+      {
+        "ks": "KS3",
+        "text": "understand how instructions are stored and executed within a computer system; understand how data of various types (including text, sounds and pictures) can be represented and manipulated digitally, in the form of binary digits"
+      }
+    ]
+  }
+}

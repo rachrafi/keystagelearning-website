@@ -14,6 +14,7 @@ const groups = topic.twoPart
   ? [
       { title: 'Part 1 · KS2', note: 'Start here if you are in Years 3 to 6.', items: vs.filter((v) => v.part === 1) },
       { title: 'Part 2 · KS3', note: 'Goes deeper, for Years 7 to 9.', items: vs.filter((v) => v.part === 2) },
+      { title: 'Part 3 · KS3', note: 'Takes it further still, for Years 8 and 9.', items: vs.filter((v) => v.part === 3) },
     ].filter((g) => g.items.length)
   : [{ title: 'Videos', note: '', items: vs }];
 ---

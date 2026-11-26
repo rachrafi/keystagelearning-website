@@ -1,0 +1,23 @@
+---
+// "National Curriculum" box under a video: the key stage, a short summary,
+// and the official statements the video covers.
+import { curriculumFor, SOURCE } from '../data/curriculum';
+interface Props { slug: string }
+const c = curriculumFor(Astro.props.slug);
+---
+{c && c.statements.length > 0 && (
+  <section class="curriculum" aria-labelledby="nc-heading">
+    <h2 id="nc-heading">National Curriculum <span>(England), Computing {c.stages.join(' & ')}</span></h2>
+    {c.summary && <p class="nc-summary">{c.summary}</p>}
+    <h3>Curriculum points covered</h3>
+    <ul>
+      {c.statements.map((s) => (
+        <li>
+          <a href={`/curriculum/#${s.id}`}><span class:list={['badge', s.ks.toLowerCase()]}>{s.ks}</span> <strong>{s.short}</strong></a>
+          <q>Pupils should be taught to {s.text}</q>
+        </li>
+      ))}
+    </ul>
+    <p class="nc-source"><a href="/curriculum/">See every curriculum point and the lessons that cover it</a>. {SOURCE}</p>
+  </section>
+)}
